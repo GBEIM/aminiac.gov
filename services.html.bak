@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Government Services - Federal Republic of Aminoac">
+    <title>Public Services - Federal Republic of Aminoac</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --gov-blue-dark: #1a237e;
+            --gov-blue-primary: #000091;
+            --gov-cyan: #00acc1; 
+            --gov-cyan-hover: #00838f;
+            --bg-light: #f3f4f6;
+            --text-main: #161616;
+            --text-secondary: #505050;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
+
+        /* --- 2. Utility Components --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 0;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--gov-blue-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gov-blue-dark);
+        }
+
+        /* --- 3. Top Identity Bar --- */
+        .usa-banner {
+            background-color: #f0f0f0;
+            font-size: 0.75rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .usa-banner .container { display: flex; align-items: center; }
+        
+        .flag-icon {
+            width: 20px; 
+            height: auto;
+            margin-right: 8px; 
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* --- 4. Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 15px;
+            font-weight: 700; font-size: 1.25rem; color: var(--gov-blue-dark);
+        }
+        .logo img { height: 45px; }
+
+        /* Desktop Nav */
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-main); font-size: 0.95rem; position: relative; }
+        .nav-link:hover { color: var(--gov-blue-primary); }
+        .nav-link.active { color: var(--gov-blue-primary); }
+        
+        /* Search Trigger (Desktop) */
+        .desktop-search-btn {
+            background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .desktop-search-btn:hover { color: var(--gov-blue-primary); }
+
+        /* Mobile specific elements (Hidden on Desktop) */
+        .mobile-controls { display: none; }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001;
+        }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--gov-blue-dark); transition: 0.3s; }
+
+        /* --- 5. Page Hero --- */
+        .services-hero {
+            background: var(--gov-blue-dark);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .services-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .services-hero p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        /* --- 6. Quick Access Box --- */
+        .quick-access-box { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            margin-top: -40px; 
+            border-top: 5px solid var(--gov-blue-primary); 
+            margin-bottom: 40px;
+        }
+        
+        .quick-access-box h2 { 
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            color: var(--gov-blue-dark); 
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid var(--gov-blue-primary);
+            color: var(--gov-blue-primary);
+            font-weight: 600;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .quick-link-btn:hover {
+            background: var(--gov-blue-primary);
+            color: white;
+        }
+
+        .quick-link-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* --- 7. Service Categories List --- */
+        .service-category {
+            background: white;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            background: #f8f9fa;
+            padding: 25px 30px;
+            border-bottom: 3px solid var(--gov-blue-primary);
+        }
+
+        .category-header h2 {
+            color: var(--gov-blue-dark);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .category-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .service-list {
+            background: white;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+
+        .service-item:last-child { border-bottom: none; }
+        .service-item:hover { background-color: #fcfcfc; }
+
+        .service-icon {
+            font-size: 1.5rem;
+            color: var(--gov-blue-primary);
+            width: 60px;
+            padding-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .service-text {
+            flex: 1;
+        }
+
+        .service-text h3 {
+            color: var(--gov-blue-dark);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .service-text p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            max-width: 800px;
+            font-size: 0.95rem;
+        }
+
+        .service-link {
+            color: var(--gov-blue-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: underline;
+        }
+
+        .service-link:hover {
+            color: var(--gov-blue-dark);
+        }
+
+        /* Info Notice Boxes */
+        .info-notice {
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--gov-blue-primary);
+            padding: 20px 25px;
+            margin: 30px;
+            border-radius: 0;
+        }
+
+        .info-notice h4 {
+            color: var(--gov-blue-dark);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .info-notice p {
+            color: var(--text-main);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* --- 8. Footer --- */
+        footer { background-color: #111; color: #ddd; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { text-decoration: underline; color: white; }
+
+        .footer-bottom {
+            border-top: 1px solid #333; padding-top: 30px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a {
+            color: white; font-size: 1.5rem; transition: color 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #222;
+        }
+        .social-links a:hover { background: var(--gov-blue-primary); }
+
+        /* --- 9. Back to Top Button --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--gov-cyan);
+            color: white;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 20px; cursor: pointer; border: none;
+            opacity: 0; visibility: hidden;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999;
+        }
+        
+        #backToTop.show { opacity: 1; visibility: visible; transform: scale(1); }
+        #backToTop:hover { background-color: var(--gov-cyan-hover); transform: scale(1.1); }
+
+        /* --- 10. Search Overlay System --- */
+        .search-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        .search-overlay.active { display: flex; }
+
+        .search-close {
+            position: absolute; top: 30px; right: 30px;
+            font-size: 2rem; cursor: pointer; color: var(--text-secondary);
+            background: none; border: none;
+        }
+
+        .search-container { width: 100%; max-width: 700px; padding: 0 20px; }
+
+        .search-input-lg {
+            width: 100%; border: none; border-bottom: 2px solid var(--gov-blue-primary);
+            font-size: 2rem; padding: 15px 0; background: transparent; outline: none;
+            color: var(--gov-blue-dark); font-weight: 300;
+        }
+
+        .search-results { margin-top: 40px; max-height: 60vh; overflow-y: auto; }
+
+        .result-item {
+            display: block; padding: 20px; border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+        .result-item:hover { background-color: #f9f9f9; }
+        .result-tag {
+            font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+            color: var(--gov-blue-primary); margin-bottom: 5px; display: inline-block;
+        }
+        .result-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+        .result-desc { font-size: 0.9rem; color: var(--text-secondary); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .services-hero h1 { font-size: 2rem; }
+            .hamburger { display: flex; }
+            .desktop-search-btn { display: none; }
+
+            .nav-menu {
+                position: absolute; top: var(--header-height); left: 0; width: 100%;
+                background-color: white; flex-direction: column; align-items: flex-start;
+                padding: 0; border-bottom: 1px solid #ddd;
+                max-height: 0; overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active { max-height: 600px; }
+
+            .nav-menu li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-link { display: block; padding: 15px 20px; width: 100%; }
+
+            .mobile-controls {
+                display: block; width: 100%; padding: 20px; background-color: #f9fafb;
+            }
+
+            .mobile-search { display: flex; margin-bottom: 15px; }
+            .mobile-search input { 
+                flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px;
+            }
+            .mobile-search button {
+                padding: 10px 15px; background: var(--gov-blue-primary); color: white; border: none; border-radius: 0 4px 4px 0;
+            }
+
+            .lang-dropdown {
+                position: relative;
+            }
+
+            .lang-btn {
+                width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background: white; text-align: left;
+                cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+                font-weight: bold;
+            }
+            .lang-btn:hover { background-color: #f0f0f0; }
+
+            .lang-menu {
+                display: none; position: relative; margin-top: 5px;
+                background: white; border: 1px solid #ccc; border-radius: 4px; overflow: hidden;
+                flex-direction: column;
+            }
+            .lang-menu.active { display: flex; }
+            .lang-menu a {
+                padding: 8px 10px; display: flex; align-items: center; gap: 8px;
+                border-bottom: 1px solid #eee; color: var(--gov-blue-dark); font-size: 0.9rem;
+            }
+            .lang-menu a:last-child { border-bottom: none; }
+            .lang-menu a:hover { background-color: var(--gov-blue-primary); color: white; }
+            .lang-menu img { width: 20px; height: 14px; object-fit: cover; }
+
+            .quick-access-box { padding: 20px; }
+            .quick-links { grid-template-columns: 1fr; }
+            
+            .category-header { padding: 20px; }
+            .service-item { flex-direction: column; padding: 20px; }
+            .service-icon { margin-bottom: 10px; }
+            .info-notice { margin: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="searchOverlay" class="search-overlay">
+        <button class="search-close" id="searchClose">&times;</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input-lg" placeholder="Search for services, benefits, taxes..." autofocus>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <div class="usa-banner">
+        <div class="container">
+            <img src="/flags/aminoac.png" alt="Flag of Aminoac" class="flag-icon">
+            An official website of the Federal Republic of Aminoac
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <img src="images/national-emblem.png" alt="national-emblem"> 
+                <span>FR Aminoac</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="mobile-controls">
+                        <div class="mobile-search">
+                            <input type="text" id="mobileSearchInput" placeholder="Search government info..." aria-label="Search government info">
+                            <button aria-label="Search" id="mobileSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-btn" aria-haspopup="true" aria-expanded="false">
+                                Language <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="lang-menu" aria-label="Select language">
+                                <a href="/an"><img src="flags/aminoac.png" alt="Aminoac"> Aminoac</a>
+                                <a href="/index.html"><img src="flags/uk.png" alt="English"> English</a>
+                                <a href="/ru"><img src="flags/ru.png" alt="Русский"> Русский</a>
+                                <a href="/fr"><img src="flags/fr.png" alt="Français"> Français</a>
+                                <a href="/zh"><img src="flags/cn.png" alt="简体中文"> 简体中文</a>
+                                <a href="/zh-tw"><img src="flags/tw.png" alt="繁體中文（台灣）"> 繁體中文（台灣）</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/news" class="nav-link">News</a></li>
+                    <li><a href="/immigration" class="nav-link">Immigration</a></li>
+                    <li><a href="/services" class="nav-link active">Services</a></li>
+                    <li><a href="/travel" class="nav-link">Travel</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    
+                    <li>
+                        <button class="desktop-search-btn" id="desktopSearchTrigger" aria-label="Open Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="services-hero">
+        <div class="container">
+            <h1>Public Services</h1>
+            <p>Access essential government services and support programs</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Quick Access Section -->
+        <div class="quick-access-box">
+            <h2>Quick Access</h2>
+            <div class="quick-links">
+                <a href="#national-insurance" class="quick-link-btn">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Insurance</span>
+                </a>
+                <a href="#tax-payment" class="quick-link-btn">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Taxes</span>
+                </a>
+                <a href="#employment" class="quick-link-btn">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Employment</span>
+                </a>
+                <a href="#cost-of-living" class="quick-link-btn">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Cost of Living</span>
+                </a>
+                <a href="#social-benefits" class="quick-link-btn">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>Benefits</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- National Insurance Category -->
+        <div class="service-category" id="national-insurance">
+            <div class="category-header">
+                <h2>National Insurance</h2>
+                <p>Healthcare, pensions, unemployment benefits, and disability support for all residents and workers</p>
+            </div>
+
+            <div class="info-notice">
+                <h4>Who Needs to Contribute?</h4>
+                <p>All employed individuals aged 18 to 67, self-employed workers, and employers must make regular contributions to the National Insurance system. Contributions are automatically deducted from salaries for employed workers, while self-employed individuals must file quarterly payments.</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="service-text">
+                        <h3>Apply for National Insurance</h3>
+                        <p>Register for a National Insurance number and start your coverage. This is required for all new residents and workers entering the Aminoac workforce.</p>
+                        <a href="/services/national-insurance/apply" class="service-link">Start Application</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-search-dollar"></i></div>
+                    <div class="service-text">
+                        <h3>Check Your Contributions</h3>
+                        <p>View your contribution history, verify payments, and ensure your account is up to date. Access your annual contribution statement online.</p>
+                        <a href="/services/national-insurance/check" class="service-link">Check Contributions</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div class="service-text">
+                        <h3>Claim Benefits</h3>
+                        <p>File claims for healthcare reimbursements, unemployment benefits, pension payments, or disability support through our secure online portal.</p>
+                        <a href="/services/national-insurance/claims" class="service-link">File a Claim</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+                    <div class="service-text">
+                        <h3>Healthcare Coverage</h3>
+                        <p>Access to public hospitals, clinics, and subsidized prescription medications nationwide.</p>
+                        <a href="/services/national-insurance/healthcare" class="service-link">Healthcare Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tax Payment Category -->
+        <div class="service-category" id="tax-payment">
+            <div class="category-header">
+                <h2>Tax Payment Services</h2>
+                <p>Progressive tax system funding public services, infrastructure, and social programs</p>
+            </div>
+
+            <div class="info-notice">
+                <h4>Important Tax Deadlines</h4>
+                <p>Individual income tax returns must be filed by April 30th each year. Corporate tax returns are due by June 30th. Quarterly estimated tax payments are required for self-employed individuals and businesses. Late filing may result in penalties and interest charges.</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <div class="service-text">
+                        <h3>File Income Tax</h3>
+                        <p>Submit your annual personal income tax return online. The system pre-fills information from employer reports and allows you to claim deductions and credits.</p>
+                        <a href="/services/taxes/income" class="service-link">File Tax Return</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <div class="service-text">
+                        <h3>Corporate Tax Filing</h3>
+                        <p>Business owners can file corporate tax returns, report annual revenue, claim business expenses, and manage quarterly estimated payments.</p>
+                        <a href="/services/taxes/corporate" class="service-link">Business Tax Portal</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-receipt"></i></div>
+                    <div class="service-text">
+                        <h3>Pay Outstanding Taxes</h3>
+                        <p>Make secure online payments for any outstanding tax obligations. Set up payment plans if you cannot pay the full amount immediately.</p>
+                        <a href="/services/taxes/payment" class="service-link">Make Payment</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-calculator"></i></div>
+                    <div class="service-text">
+                        <h3>Tax Calculator</h3>
+                        <p>Estimate your annual tax liability based on income, deductions, and family situation.</p>
+                        <a href="/services/taxes/calculator" class="service-link">Calculate Taxes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employment Services Category -->
+        <div class="service-category" id="employment">
+            <div class="category-header">
+                <h2>Employment Services</h2>
+                <p>Job search assistance, career counseling, vocational training, and unemployment benefits</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-search"></i></div>
+                    <div class="service-text">
+                        <h3>Job Search Portal</h3>
+                        <p>Browse thousands of job openings across Aminoac, create a professional profile, upload your resume, and apply directly to positions that match your skills and experience.</p>
+                        <a href="/services/employment/jobs" class="service-link">Find Jobs</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="service-text">
+                        <h3>Training Programs</h3>
+                        <p>Enroll in government-sponsored vocational training and skills development courses. Programs are available in technology, healthcare, construction, hospitality, and other growing sectors.</p>
+                        <a href="/services/employment/training" class="service-link">View Programs</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-money-check-alt"></i></div>
+                    <div class="service-text">
+                        <h3>Unemployment Benefits</h3>
+                        <p>Apply for unemployment compensation if you have lost your job. Benefits provide temporary financial support while you search for new employment opportunities.</p>
+                        <a href="/services/employment/unemployment" class="service-link">Apply for Benefits</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="service-text">
+                        <h3>Career Counseling</h3>
+                        <p>Schedule a free appointment with a professional career counselor who can help you identify your strengths, explore career options, and improve your job search strategy.</p>
+                        <a href="/services/employment/counseling" class="service-link">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cost of Living Support Category -->
+        <div class="service-category" id="cost-of-living">
+            <div class="category-header">
+                <h2>Cost of Living Support</h2>
+                <p>Energy subsidies, housing assistance, food programs, and other support for managing living expenses</p>
+            </div>
+
+            <div class="info-notice">
+                <h4>Eligibility Criteria</h4>
+                <p>Most cost of living support programs are available to households earning below 150% of the national median income. Families with children, senior citizens, and individuals with disabilities may qualify for additional assistance. Eligibility is determined through an online assessment that considers household size, income, assets, and special circumstances.</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="service-text">
+                        <h3>Energy Subsidy Program</h3>
+                        <p>Receive monthly credits on your electricity and heating bills. The subsidy amount is based on household size and income, with additional support during winter months.</p>
+                        <a href="/services/cost-of-living/energy" class="service-link">Apply for Subsidy</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <div class="service-text">
+                        <h3>Housing Assistance</h3>
+                        <p>Access rental assistance, mortgage payment relief, and social housing programs. Help is available for those struggling with housing costs or facing homelessness.</p>
+                        <a href="/services/cost-of-living/housing" class="service-link">Get Housing Help</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="service-text">
+                        <h3>Food Support Programs</h3>
+                        <p>Apply for food vouchers that can be used at participating supermarkets. Low-income families and seniors can receive monthly allocations to purchase groceries.</p>
+                        <a href="/services/cost-of-living/food" class="service-link">Request Food Vouchers</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-baby"></i></div>
+                    <div class="service-text">
+                        <h3>Childcare Subsidies</h3>
+                        <p>Working parents can receive up to 70% subsidy on licensed childcare and preschool costs.</p>
+                        <a href="/services/cost-of-living/childcare" class="service-link">Apply for Childcare Support</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-bus"></i></div>
+                    <div class="service-text">
+                        <h3>Transportation Vouchers</h3>
+                        <p>Reduced-fare public transit passes for low-income workers, students, and elderly citizens.</p>
+                        <a href="/services/cost-of-living/transport" class="service-link">Get Transit Pass</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Benefits Category -->
+        <div class="service-category" id="social-benefits">
+            <div class="category-header">
+                <h2>Social Benefits</h2>
+                <p>Income support, disability allowances, family benefits, and emergency assistance programs</p>
+            </div>
+
+            <div class="info-notice">
+                <h4>Application Process</h4>
+                <p>Complete the online benefits assessment to determine which programs you qualify for. The system will guide you through providing necessary documentation such as identification, income statements, and medical records where applicable. Applications are typically processed within 14 business days, and you will receive notification of the decision via email and postal mail.</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-hands-helping"></i></div>
+                    <div class="service-text">
+                        <h3>Income Support</h3>
+                        <p>Apply for income assistance if you are unable to work due to illness, caregiving responsibilities, or temporary hardship. Monthly payments help cover basic living expenses.</p>
+                        <a href="/services/social-benefits/income-support" class="service-link">Apply Now</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-child"></i></div>
+                    <div class="service-text">
+                        <h3>Family Benefits</h3>
+                        <p>Parents and guardians can receive monthly child benefits, education allowances, and maternity or paternity leave payments to support family needs.</p>
+                        <a href="/services/social-benefits/family" class="service-link">Family Support</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-user-clock"></i></div>
+                    <div class="service-text">
+                        <h3>Senior Citizen Benefits</h3>
+                        <p>Elderly citizens can access old-age pensions, healthcare supplements, and home care services. Additional support is available for those without sufficient retirement savings.</p>
+                        <a href="/services/social-benefits/seniors" class="service-link">Senior Benefits</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-wheelchair"></i></div>
+                    <div class="service-text">
+                        <h3>Disability Allowance</h3>
+                        <p>Financial support for individuals with physical or mental disabilities affecting work capacity.</p>
+                        <a href="/services/social-benefits/disability" class="service-link">Apply for Disability Support</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="service-text">
+                        <h3>Emergency Assistance</h3>
+                        <p>Immediate financial help for urgent situations like eviction, utility shutoff, or medical emergencies.</p>
+                        <a href="/services/social-benefits/emergency" class="service-link">Request Emergency Aid</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>About Government</h4>
+                    <ul>
+                        <li><a href="/government/president">The President</a></li>
+                        <li><a href="/government/ministries">Ministries</a></li>
+                        <li><a href="/government/legislation">Legislation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/data">Data & Statistics</a></li>
+                        <li><a href="/press">Publications</a></li>
+                        <li><a href="/forms">Forms Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/legal/accessibility">Accessibility</a></li>
+                        <li><a href="/legal/terms">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Follow government updates</p>
+                <div class="social-links">
+                    <a href="https://x.com" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://space.bilibili.com/1522815623/" target="_blank" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">© 2026 Federal Republic of Aminoac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- Search Functionality ---
+        const siteContent = [
+            { title: "National Insurance", type: "Service", desc: "Apply, check contributions, and claim benefits.", url: "#national-insurance" },
+            { title: "Tax Payment", type: "Service", desc: "File income tax and pay outstanding taxes.", url: "#tax-payment" },
+            { title: "Employment Services", type: "Service", desc: "Job search, training, and unemployment benefits.", url: "#employment" },
+            { title: "Cost of Living Support", type: "Service", desc: "Energy subsidies, housing, and food assistance.", url: "#cost-of-living" },
+            { title: "Social Benefits", type: "Service", desc: "Income support and family benefits.", url: "#social-benefits" },
+            { title: "Contact Government", type: "Contact", desc: "Get in touch.", url: "/contact" }
+        ];
+
+        const searchOverlay = document.getElementById('searchOverlay');
+        const desktopSearchTrigger = document.getElementById('desktopSearchTrigger');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+        function openSearch(initialQuery = '') {
+            searchOverlay.classList.add('active');
+            searchInput.value = initialQuery;
+            searchInput.focus();
+            if(initialQuery) performSearch(initialQuery);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        }
+
+        function performSearch(query) {
+            const lowerQuery = query.toLowerCase();
+            const filtered = siteContent.filter(item => 
+                item.title.toLowerCase().includes(lowerQuery) || 
+                item.desc.toLowerCase().includes(lowerQuery)
+            );
+
+            searchResults.innerHTML = filtered.length > 0 ? filtered.map(item => `
+                <a href="${item.url}" class="result-item">
+                    <span class="result-tag">${item.type}</span>
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-desc">${item.desc}</div>
+                </a>
+            `).join('') : '<div style="text-align:center; color:#666; padding:20px;">No results found.</div>';
+            
+            if(query === '') searchResults.innerHTML = '';
+        }
+
+        desktopSearchTrigger.addEventListener('click', () => openSearch());
+        searchClose.addEventListener('click', closeSearch);
+        searchInput.addEventListener('input', (e) => performSearch(e.target.value));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSearch();
+        });
+
+        mobileSearchBtn.addEventListener('click', () => {
+            const query = mobileSearchInput.value;
+            if(query) openSearch(query);
+        });
+        
+        mobileSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                openSearch(mobileSearchInput.value);
+            }
+        });
+
+        // --- Hamburger Menu ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const langBtn = document.querySelector('.lang-btn');
+        const langMenu = document.querySelector('.lang-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        }));
+
+        if(langBtn) {
+            langBtn.addEventListener('click', () => {
+                langMenu.classList.toggle('active');
+                const expanded = langBtn.getAttribute('aria-expanded') === 'true' || false;
+                langBtn.setAttribute('aria-expanded', !expanded);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+                    langMenu.classList.remove('active');
+                    langBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // --- Back to Top ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Smooth scroll for quick access links ---
+        document.querySelectorAll('.quick-link-btn').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if(href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if(target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

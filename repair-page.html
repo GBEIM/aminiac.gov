@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .icon {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .warning-sign {
+            fill: #FFC107;
+            stroke: #333333;
+            stroke-width: 4;
+        }
+
+        .exclamation {
+            fill: #333333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #222222;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #666666;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .icon {
+                width: 110px;
+                height: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Warning triangle -->
+                <polygon class="warning-sign" points="50,10 95,85 5,85"/>
+                <!-- Exclamation mark -->
+                <rect class="exclamation" x="47" y="35" width="6" height="25" rx="3"/>
+                <circle class="exclamation" cx="50" cy="70" r="4"/>
+            </svg>
+        </div>
+        
+        <h1>Under Maintenance</h1>
+        <p>We're currently performing scheduled maintenance. We'll be back online shortly.</p>
+    </div>
+</body>
+</html>

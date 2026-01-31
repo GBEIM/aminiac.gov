@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact the Federal Republic of Aminoac Government">
+    <title>Contact Government - Federal Republic of Aminoac</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --gov-blue-dark: #1a237e;
+            --gov-blue-primary: #000091;
+            --gov-cyan: #00acc1; 
+            --gov-cyan-hover: #00838f;
+            --bg-light: #f3f4f6;
+            --text-main: #161616;
+            --text-secondary: #505050;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
+
+        /* --- 2. Utility Components --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--gov-blue-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gov-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        /* --- 3. Top Identity Bar --- */
+        .usa-banner {
+            background-color: #f0f0f0;
+            font-size: 0.75rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .usa-banner .container { display: flex; align-items: center; }
+        
+        .flag-icon {
+            width: 20px; 
+            height: auto;
+            margin-right: 8px; 
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* --- 4. Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 15px;
+            font-weight: 700; font-size: 1.25rem; color: var(--gov-blue-dark);
+        }
+        .logo img { height: 45px; }
+
+        /* Desktop Nav */
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-main); font-size: 0.95rem; position: relative; }
+        .nav-link:hover { color: var(--gov-blue-primary); }
+        
+        /* Search Trigger (Desktop) */
+        .desktop-search-btn {
+            background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .desktop-search-btn:hover { color: var(--gov-blue-primary); }
+
+        /* Mobile specific elements (Hidden on Desktop) */
+        .mobile-controls { display: none; }
+
+        /* Desktop specific header actions */
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+        .lang-switch a { font-size: 0.85rem; color: var(--gov-blue-primary); font-weight: 600; margin: 0 5px;}
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001;
+        }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--gov-blue-dark); transition: 0.3s; }
+
+        /* --- 5. Page Header --- */
+        .page-header {
+            background: linear-gradient(135deg, var(--gov-blue-dark) 0%, var(--gov-blue-primary) 100%);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- 6. Contact Sections --- */
+        section { padding: 60px 0; }
+        section h2 { 
+            font-size: 2rem; 
+            color: var(--gov-blue-dark); 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Provincial Contacts Title Optimization */
+        .contacts-title {
+            font-size: 2.5rem;
+            color: var(--gov-blue-dark);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .contacts-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gov-blue-primary), var(--gov-cyan));
+            border-radius: 2px;
+        }
+
+        .contacts-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Accordion Provincial Contacts */
+        .province-section {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .province-header {
+            background: linear-gradient(90deg, var(--gov-blue-primary), var(--gov-blue-dark));
+            color: white;
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .province-header:hover {
+            background: linear-gradient(90deg, var(--gov-blue-dark), var(--gov-blue-primary));
+        }
+
+        .province-header-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .province-header-content p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .province-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .province-body {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .province-body.active {
+            max-height: 2000px;
+            padding: 30px;
+        }
+
+        .department {
+            margin-bottom: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .department:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .department h4 {
+            color: var(--gov-blue-primary);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .contact-item .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .contact-value a {
+            color: var(--gov-blue-primary);
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--gov-blue-primary);
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gov-blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Message Board - Multi-step Form */
+        .message-board {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .message-board h3 {
+            color: var(--gov-blue-dark);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Multi-step Progress Indicator */
+        .form-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .form-progress::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: 0;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gov-blue-primary), var(--gov-cyan));
+            z-index: 1;
+            transition: width 0.3s ease;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-circle {
+            background-color: var(--gov-blue-primary);
+            border-color: var(--gov-blue-primary);
+            color: white;
+        }
+
+        .progress-step.completed .step-circle {
+            background-color: var(--gov-cyan);
+            border-color: var(--gov-cyan);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--gov-blue-primary);
+            font-weight: 600;
+        }
+
+        /* Form Steps */
+        .form-step {
+            display: none;
+            animation: fadeInStep 0.3s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeInStep {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-content {
+            min-height: 200px;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .btn-secondary {
+            background-color: var(--text-secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-main);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gov-blue-primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .submit-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .submit-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .messages-display {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .messages-display h4 {
+            color: var(--gov-blue-dark);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+
+        .message-item {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--gov-blue-primary);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .message-author {
+            font-weight: 600;
+            color: var(--gov-blue-dark);
+        }
+
+        .message-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .message-content {
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+
+        /* --- Footer --- */
+        footer { background-color: #111; color: #ddd; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { text-decoration: underline; color: white; }
+
+        .footer-bottom {
+            border-top: 1px solid #333; padding-top: 30px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a {
+            color: white; font-size: 1.5rem; transition: color 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #222;
+        }
+        .social-links a:hover { background: var(--gov-blue-primary); }
+
+        /* --- Back to Top Button --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--gov-cyan);
+            color: white;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 20px; cursor: pointer; border: none;
+            opacity: 0; visibility: hidden;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999;
+        }
+        
+        #backToTop.show { opacity: 1; visibility: visible; transform: scale(1); }
+        #backToTop:hover { background-color: var(--gov-cyan-hover); transform: scale(1.1); }
+
+        /* --- Search Overlay System --- */
+        .search-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        .search-overlay.active { display: flex; }
+
+        .search-close {
+            position: absolute; top: 30px; right: 30px;
+            font-size: 2rem; cursor: pointer; color: var(--text-secondary);
+            background: none; border: none;
+        }
+
+        .search-container { width: 100%; max-width: 700px; padding: 0 20px; }
+
+        .search-input-lg {
+            width: 100%; border: none; border-bottom: 2px solid var(--gov-blue-primary);
+            font-size: 2rem; padding: 15px 0; background: transparent; outline: none;
+            color: var(--gov-blue-dark); font-weight: 300;
+        }
+
+        .search-results { margin-top: 40px; max-height: 60vh; overflow-y: auto; }
+
+        .result-item {
+            display: block; padding: 20px; border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+        .result-item:hover { background-color: #f9f9f9; }
+        .result-tag {
+            font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+            color: var(--gov-blue-primary); margin-bottom: 5px; display: inline-block;
+        }
+        .result-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+        .result-desc { font-size: 0.9rem; color: var(--text-secondary); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .page-header h1 { font-size: 2rem; }
+            .hamburger { display: flex; }
+            .header-actions { display: none; }
+            .desktop-search-btn { display: none; }
+
+            .nav-menu {
+                position: absolute; top: var(--header-height); left: 0; width: 100%;
+                background-color: white; flex-direction: column; align-items: flex-start;
+                padding: 0; border-bottom: 1px solid #ddd;
+                max-height: 0; overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active { max-height: 600px; }
+
+            .nav-menu li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-link { display: block; padding: 15px 20px; width: 100%; }
+
+            .mobile-controls {
+                display: block; width: 100%; padding: 20px; background-color: #f9fafb;
+            }
+
+            .mobile-search { display: flex; margin-bottom: 15px; }
+            .mobile-search input { 
+                flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px;
+            }
+            .mobile-search button {
+                padding: 10px 15px; background: var(--gov-blue-primary); color: white; border: none; border-radius: 0 4px 4px 0;
+            }
+
+            .lang-dropdown {
+                position: relative;
+            }
+
+            .lang-btn {
+                width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background: white; text-align: left;
+                cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+                font-weight: bold;
+            }
+            .lang-btn:hover { background-color: #f0f0f0; }
+
+            .lang-menu {
+                display: none; position: relative; margin-top: 5px;
+                background: white; border: 1px solid #ccc; border-radius: 4px; overflow: hidden;
+                flex-direction: column;
+            }
+            .lang-menu.active { display: flex; }
+            .lang-menu a {
+                padding: 8px 10px; display: flex; align-items: center; gap: 8px;
+                border-bottom: 1px solid #eee; color: var(--gov-blue-dark); font-size: 0.9rem;
+            }
+            .lang-menu a:last-child { border-bottom: none; }
+            .lang-menu a:hover { background-color: var(--gov-blue-primary); color: white; }
+            .lang-menu img { width: 20px; height: 14px; object-fit: cover; }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .province-body {
+                padding: 20px;
+            }
+
+            .message-board {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="searchOverlay" class="search-overlay">
+        <button class="search-close" id="searchClose">&times;</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input-lg" placeholder="Type to search services, news..." autofocus>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <div class="usa-banner">
+        <div class="container">
+            <img src="/flags/aminoac.png" alt="Flag of Aminoac" class="flag-icon">
+            An official website of the Federal Republic of Aminoac
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <img src="images/national-emblem.png" alt="national-emblem"> 
+                <span>FR Aminoac</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="mobile-controls">
+                        <div class="mobile-search">
+                            <input type="text" id="mobileSearchInput" placeholder="Search government info..." aria-label="Search government info">
+                            <button aria-label="Search" id="mobileSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-btn" aria-haspopup="true" aria-expanded="false">
+                                Language <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="lang-menu" aria-label="Select language">
+                                <a href="/an"><img src="flags/aminoac.png" alt="Aminoac"> Aminoac</a>
+                                <a href="/index.html"><img src="flags/uk.png" alt="English"> English</a>
+                                <a href="/ru"><img src="flags/ru.png" alt="Русский"> Русский</a>
+                                <a href="/fr"><img src="flags/fr.png" alt="Français"> Français</a>
+                                <a href="/zh"><img src="flags/cn.png" alt="简体中文"> 简体中文</a>
+                                <a href="/zh-tw"><img src="flags/tw.png" alt="繁體中文（台灣）"> 繁體中文（台灣）</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/news" class="nav-link">News</a></li>
+                    <li><a href="/immigration" class="nav-link">Immigration</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/travel" class="nav-link">Travel</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    
+                    <li>
+                        <button class="desktop-search-btn" id="desktopSearchTrigger" aria-label="Open Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Government</h1>
+            <p>Reach out to provincial governments and share your feedback through our message board</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h2 class="contacts-title">Provincial Government Contacts</h2>
+            <p class="contacts-subtitle">Access contact information for all provinces and autonomous states</p>
+
+            <!-- Anlang Province -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Anlang Province</h3>
+                        <p>Provincial Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>Provincial Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@anlang.gov.an">court@anlang.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-01-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Justice Building, Central Anlang, 100001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@anlang.gov.an">parliament@anlang.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-01-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament House, Democracy Avenue, Anlang, 100002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@anlang.gov.an">admin@anlang.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-01-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Provincial Administrative Center, Anlang, 100003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abiji Province -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Abiji Province</h3>
+                        <p>Provincial Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>Provincial Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@abiji.gov.an">court@abiji.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-02-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Abiji, 0200001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@abiji.gov.an">parliament@abiji.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-02-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Abiji, 0200002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@abiji.gov.an">admin@abiji.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-02-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Abiji, 0200003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nachuge Province -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Nachuge Province</h3>
+                        <p>Provincial Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>Provincial Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@nachuge.gov.an">court@nachuge.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-03-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Nachuge, 0300001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@nachuge.gov.an">parliament@nachuge.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-03-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Nachuge, 0300002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@nachuge.gov.an">admin@nachuge.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-03-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Nachuge, 0300003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yibashi Province -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Yibashi Province</h3>
+                        <p>Provincial Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>Provincial Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@yibashi.gov.an">court@yibashi.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-04-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Yibashi, 0400001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@yibashi.gov.an">parliament@yibashi.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-04-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Yibashi, 0400002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@yibashi.gov.an">admin@yibashi.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-04-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Yibashi, 0400003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risak Province -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Risak Province</h3>
+                        <p>Provincial Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>Provincial Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@risak.gov.an">court@risak.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-05-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Risak, 0500001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@risak.gov.an">parliament@risak.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-05-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Risak, 0500002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@risak.gov.an">admin@risak.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-05-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Risak, 0500003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nayouhe Province -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Nayouhe Province</h3>
+                        <p>Provincial Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>Provincial Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@nayouhe.gov.an">court@nayouhe.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-06-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Nayouhe, 0600001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@nayouhe.gov.an">parliament@nayouhe.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-06-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Nayouhe, 0600002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>Provincial Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@nayouhe.gov.an">admin@nayouhe.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-06-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Nayouhe, 0600003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yibashad State -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Yibashad State</h3>
+                        <p>Autonomous State Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>State Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@yibashad.gov.an">court@yibashad.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-07-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Yibashad, 0700001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>State Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@yibashad.gov.an">parliament@yibashad.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-07-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Yibashad, 0700002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>State Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@yibashad.gov.an">admin@yibashad.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-07-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Yibashad, 0700003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Misi State -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Misi State</h3>
+                        <p>Autonomous State Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>State Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@misi.gov.an">court@misi.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-08-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Misi, 0800001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>State Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@misi.gov.an">parliament@misi.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-08-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Misi, 0800002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>State Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@misi.gov.an">admin@misi.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-08-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Misi, 0800003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kuineihan State -->
+            <div class="province-section">
+                <div class="province-header">
+                    <div class="province-header-content">
+                        <h3>Kuineihan State</h3>
+                        <p>Autonomous State Administration</p>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="province-body">
+                    <div class="department">
+                        <h4>State Court</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:court@kuineihan.gov.an">court@kuineihan.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-09-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Court Building, Kuineihan, 0900001</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>State Parliament</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:parliament@kuineihan.gov.an">parliament@kuineihan.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-09-2345-6789</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Parliament Building, Kuineihan, 0900002</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <h4>State Government</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value"><a href="mailto:admin@kuineihan.gov.an">admin@kuineihan.gov.an</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+990-09-3456-7890</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Address</div>
+                                    <div class="contact-value">Government Building, Kuineihan, 0900003</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-info">
+                                    <div class="contact-label">Social Media</div>
+                                    <div class="social-icons">
+                                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Government Message Board -->
+            <div class="message-board">
+                <h3>Government Message Board</h3>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">Share your thoughts, questions, or feedback with the government</p>
+                
+                <!-- Progress Indicator -->
+                <div class="form-progress">
+                    <div class="progress-line" id="progressLine"></div>
+                    <div class="progress-step active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Name</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Email</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Message</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Review</div>
+                    </div>
+                </div>
+
+                <form id="messageForm">
+                    <!-- Step 1: Name -->
+                    <div class="form-step active" data-step="1">
+                        <div class="step-content">
+                            <div class="form-group">
+                                <label for="userName">Your Name</label>
+                                <input type="text" id="userName" name="userName" class="form-control" placeholder="Enter your full name" required>
+                                <small style="color: var(--text-secondary); display: block; margin-top: 8px;">Please provide your full name for identification purposes.</small>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <div></div>
+                            <button type="button" class="btn btn-primary next-step">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Email -->
+                    <div class="form-step" data-step="2">
+                        <div class="step-content">
+                            <div class="form-group">
+                                <label for="userEmail">Email Address</label>
+                                <input type="email" id="userEmail" name="userEmail" class="form-control" placeholder="your.email@example.com" required>
+                                <small style="color: var(--text-secondary); display: block; margin-top: 8px;">We'll use this email to respond to your message if needed.</small>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-step">Back</button>
+                            <button type="button" class="btn btn-primary next-step">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Message -->
+                    <div class="form-step" data-step="3">
+                        <div class="step-content">
+                            <div class="form-group">
+                                <label for="userMessage">Your Message</label>
+                                <textarea id="userMessage" name="userMessage" class="form-control" rows="6" placeholder="Write your message, question, or feedback here..." required></textarea>
+                                <small style="color: var(--text-secondary); display: block; margin-top: 8px;">Please be clear and concise in your message.</small>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-step">Back</button>
+                            <button type="button" class="btn btn-primary next-step">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review -->
+                    <div class="form-step" data-step="4">
+                        <div class="step-content">
+                            <h4 style="color: var(--gov-blue-dark); margin-bottom: 20px;">Review Your Submission</h4>
+                            <div style="background-color: var(--bg-light); padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                                <div style="margin-bottom: 15px;">
+                                    <strong style="color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;">Name:</strong>
+                                    <div id="reviewName" style="color: var(--text-main); margin-top: 5px;"></div>
+                                </div>
+                                <div style="margin-bottom: 15px;">
+                                    <strong style="color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;">Email:</strong>
+                                    <div id="reviewEmail" style="color: var(--text-main); margin-top: 5px;"></div>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;">Message:</strong>
+                                    <div id="reviewMessage" style="color: var(--text-main); margin-top: 5px; white-space: pre-wrap;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-step">Back to Edit</button>
+                            <button type="submit" class="btn btn-primary">Submit Message</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="submitStatus" class="submit-status"></div>
+
+                <div class="messages-display">
+                    <h4>Recent Messages</h4>
+                    <div id="messagesList">
+                        <div class="loading">Loading messages...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>About Government</h4>
+                    <ul>
+                        <li><a href="/government/president">The President</a></li>
+                        <li><a href="/government/ministries">Ministries</a></li>
+                        <li><a href="/government/legislation">Legislation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/data">Data & Statistics</a></li>
+                        <li><a href="/press">Publications</a></li>
+                        <li><a href="/forms">Forms Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/legal/accessibility">Accessibility</a></li>
+                        <li><a href="/legal/terms">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Follow government updates</p>
+                <div class="social-links">
+                    <a href="https://x.com" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://space.bilibili.com/1522815623/" target="_blank" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">© 2026 Federal Republic of Aminoac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- Search Functionality ---
+        const siteContent = [
+            { title: "New Economic Policy 2026", type: "News", desc: "Measures to boost local businesses.", url: "/news/economic-policy-2026" },
+            { title: "Winter Vaccination Drive", type: "Health", desc: "Flu shot program locations.", url: "/news/health-update" },
+            { title: "University Grants", type: "Education", desc: "National Scholarship Program.", url: "/news/education-grants" },
+            { title: "National Insurance", type: "Service", desc: "Contributions and benefits.", url: "/services/national-insurance" },
+            { title: "Pay Taxes", type: "Service", desc: "Income and business tax.", url: "/services/taxes" },
+            { title: "Visas & Immigration", type: "Immigration", desc: "Residency and work permits.", url: "/immigration/visa" },
+            { title: "Employment Services", type: "Service", desc: "Jobs and labor laws.", url: "/services/employment" },
+            { title: "Passport Renewal", type: "Service", desc: "Travel document services.", url: "/travel" },
+            { title: "Contact Government", type: "Contact", desc: "Get in touch.", url: "/contact" }
+        ];
+
+        const searchOverlay = document.getElementById('searchOverlay');
+        const desktopSearchTrigger = document.getElementById('desktopSearchTrigger');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+        function openSearch(initialQuery = '') {
+            searchOverlay.classList.add('active');
+            searchInput.value = initialQuery;
+            searchInput.focus();
+            if(initialQuery) performSearch(initialQuery);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        }
+
+        function performSearch(query) {
+            const lowerQuery = query.toLowerCase();
+            const filtered = siteContent.filter(item => 
+                item.title.toLowerCase().includes(lowerQuery) || 
+                item.desc.toLowerCase().includes(lowerQuery)
+            );
+
+            searchResults.innerHTML = filtered.length > 0 ? filtered.map(item => `
+                <a href="${item.url}" class="result-item">
+                    <span class="result-tag">${item.type}</span>
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-desc">${item.desc}</div>
+                </a>
+            `).join('') : '<div style="text-align:center; color:#666; padding:20px;">No results found.</div>';
+            
+            if(query === '') searchResults.innerHTML = '';
+        }
+
+        desktopSearchTrigger.addEventListener('click', () => openSearch());
+        searchClose.addEventListener('click', closeSearch);
+        searchInput.addEventListener('input', (e) => performSearch(e.target.value));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSearch();
+        });
+
+        mobileSearchBtn.addEventListener('click', () => {
+            const query = mobileSearchInput.value;
+            if(query) openSearch(query);
+        });
+        
+        mobileSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                openSearch(mobileSearchInput.value);
+            }
+        });
+
+        // --- Hamburger Menu ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const langBtn = document.querySelector('.lang-btn');
+        const langMenu = document.querySelector('.lang-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        }));
+
+        langBtn.addEventListener('click', () => {
+            langMenu.classList.toggle('active');
+            const expanded = langBtn.getAttribute('aria-expanded') === 'true' || false;
+            langBtn.setAttribute('aria-expanded', !expanded);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+                langMenu.classList.remove('active');
+                langBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // --- Back to Top ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Message Board with Cloudflare D1 ---
+        const messageForm = document.getElementById('messageForm');
+        const submitStatus = document.getElementById('submitStatus');
+        const messagesList = document.getElementById('messagesList');
+
+        // Cloudflare Worker endpoint (you'll need to replace this with your actual Worker URL)
+        const API_ENDPOINT = '/api/messages';
+
+        // Multi-step form functionality
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // Get all step elements
+        const steps = document.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const progressLine = document.getElementById('progressLine');
+
+        // Navigation buttons
+        document.querySelectorAll('.next-step').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (validateCurrentStep()) {
+                    goToStep(currentStep + 1);
+                }
+            });
+        });
+
+        document.querySelectorAll('.prev-step').forEach(btn => {
+            btn.addEventListener('click', () => {
+                goToStep(currentStep - 1);
+            });
+        });
+
+        function validateCurrentStep() {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const inputs = currentStepElement.querySelectorAll('input, textarea');
+            
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    input.reportValidity();
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        function goToStep(step) {
+            if (step < 1 || step > totalSteps) return;
+            
+            // Hide current step
+            steps.forEach(s => s.classList.remove('active'));
+            progressSteps.forEach(s => s.classList.remove('active'));
+            
+            // Show target step
+            const targetStep = document.querySelector(`.form-step[data-step="${step}"]`);
+            targetStep.classList.add('active');
+            
+            // Update progress
+            progressSteps.forEach((s, index) => {
+                if (index < step - 1) {
+                    s.classList.add('completed');
+                } else if (index === step - 1) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('completed');
+                    s.classList.remove('active');
+                }
+            });
+            
+            // Update progress line
+            const lineWidth = ((step - 1) / (totalSteps - 1)) * 100;
+            progressLine.style.width = lineWidth + '%';
+            
+            // Update review if on step 4
+            if (step === 4) {
+                document.getElementById('reviewName').textContent = document.getElementById('userName').value;
+                document.getElementById('reviewEmail').textContent = document.getElementById('userEmail').value;
+                document.getElementById('reviewMessage').textContent = document.getElementById('userMessage').value;
+            }
+            
+            currentStep = step;
+        }
+
+        // Accordion functionality for provinces
+        document.querySelectorAll('.province-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const provinceBody = this.nextElementSibling;
+                
+                // Toggle active class
+                this.classList.toggle('active');
+                provinceBody.classList.toggle('active');
+            });
+        });
+
+        // Load messages on page load
+        loadMessages();
+
+        // Handle form submission
+        messageForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('userName').value,
+                email: document.getElementById('userEmail').value,
+                message: document.getElementById('userMessage').value
+            };
+
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    submitStatus.className = 'submit-status success';
+                    submitStatus.textContent = 'Your message has been submitted successfully! Thank you for your feedback.';
+                    submitStatus.style.display = 'block';
+                    
+                    // Reset form and go back to step 1
+                    messageForm.reset();
+                    goToStep(1);
+                    
+                    loadMessages(); // Reload messages to show the new one
+                } else {
+                    throw new Error(result.error || 'Submission failed');
+                }
+            } catch (error) {
+                submitStatus.className = 'submit-status error';
+                submitStatus.textContent = 'There was an error submitting your message. Please try again later.';
+                submitStatus.style.display = 'block';
+                console.error('Error:', error);
+            }
+
+            // Hide status message after 5 seconds
+            setTimeout(() => {
+                submitStatus.style.display = 'none';
+            }, 5000);
+        });
+
+        // Load messages from database
+        async function loadMessages() {
+            try {
+                const response = await fetch(API_ENDPOINT);
+                const data = await response.json();
+
+                if (response.ok && data.messages && data.messages.length > 0) {
+                    messagesList.innerHTML = data.messages.map(msg => `
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span class="message-author">${escapeHtml(msg.name)}</span>
+                                <span class="message-date">${formatDate(msg.created_at)}</span>
+                            </div>
+                            <div class="message-content">${escapeHtml(msg.message)}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    messagesList.innerHTML = '<div style="text-align:center; color: var(--text-secondary); padding:20px;">No messages yet. Be the first to share your thoughts!</div>';
+                }
+            } catch (error) {
+                messagesList.innerHTML = '<div style="text-align:center; color: #721c24; padding:20px;">Unable to load messages at this time.</div>';
+                console.error('Error loading messages:', error);
+            }
+        }
+
+        // Helper function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Helper function to format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            return date.toLocaleDateString('en-US', options);
+        }
+    </script>
+</body>
+</html>

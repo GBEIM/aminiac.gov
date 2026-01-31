@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Latest news and updates from the Federal Republic of Aminoac">
+    <title>Government News - Federal Republic of Aminoac</title>
+    
+    <link rel="alternate" hreflang="en" href="https://aminoac.org/news" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aminoac.org/zh/news" />
+    <link rel="alternate" hreflang="x-default" href="https://aminoac.org/news" />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --gov-blue-dark: #1a237e;
+            --gov-blue-primary: #000091;
+            --gov-cyan: #00acc1; 
+            --gov-cyan-hover: #00838f;
+            --bg-light: #f3f4f6;
+            --text-main: #161616;
+            --text-secondary: #505050;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
+            --highlight-yellow: #fef3c7;
+            --red-alert: #dc2626;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- 2. Utility Components --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--gov-blue-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gov-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        /* --- 3. Top Identity Bar --- */
+        .usa-banner {
+            background-color: #f0f0f0;
+            font-size: 0.75rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .usa-banner .container { display: flex; align-items: center; }
+        
+        .flag-icon {
+            width: 20px; 
+            height: auto;
+            margin-right: 8px; 
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* --- 4. Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 15px;
+            font-weight: 700; font-size: 1.25rem; color: var(--gov-blue-dark);
+        }
+        .logo img { height: 45px; }
+
+        /* Desktop Nav */
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-main); font-size: 0.95rem; position: relative; }
+        .nav-link:hover { color: var(--gov-blue-primary); }
+        .nav-link.active { color: var(--gov-blue-primary); border-bottom: 2px solid var(--gov-blue-primary); }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001;
+        }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--gov-blue-dark); transition: 0.3s; }
+
+        /* --- 5. Page Header --- */
+        .page-header {
+            background: var(--gov-blue-primary);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- 6. Breadcrumb --- */
+        .breadcrumb {
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-list a {
+            color: var(--gov-blue-primary);
+        }
+
+        .breadcrumb-list a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            color: var(--text-secondary);
+        }
+
+        /* --- 7. News Categories Filter --- */
+        .news-filter {
+            background: white;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--gov-blue-primary);
+            background: white;
+        }
+
+        .filter-tab.active {
+            background: var(--gov-blue-primary);
+            color: white;
+            border-color: var(--gov-blue-primary);
+        }
+
+        /* --- 8. Featured News --- */
+        .featured-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .featured-news {
+            margin-bottom: 40px;
+        }
+
+        .featured-main {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.25);
+            border: 3px solid var(--red-alert);
+        }
+
+        .featured-image {
+            background: var(--red-alert);
+            padding: 50px 40px;
+            position: relative;
+        }
+
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .featured-content {
+            color: white;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--red-alert);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .featured-badge i {
+            font-size: 0.9rem;
+        }
+
+        .featured-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .featured-content p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .featured-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .featured-meta i {
+            font-size: 1rem;
+        }
+
+        .election-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--red-alert);
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .election-cta:hover {
+            background: var(--gov-blue-dark);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* --- 9. News Grid --- */
+        .news-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gov-blue-dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--gov-blue-primary);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            border-color: var(--gov-blue-primary);
+        }
+
+        .news-thumbnail {
+            height: 200px;
+            background: var(--gov-blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .news-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: var(--gov-blue-primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .news-category.foreign {
+            background: #10b981;
+        }
+
+        .news-category.welfare {
+            background: #f59e0b;
+        }
+
+        .news-category.economy {
+            background: #3b82f6;
+        }
+
+        .news-category.health {
+            background: #ef4444;
+        }
+
+        .news-category.election {
+            background: var(--red-alert);
+        }
+
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gov-blue-dark);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .news-date i {
+            margin-right: 5px;
+        }
+
+        .read-more {
+            color: var(--gov-blue-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .read-more:hover {
+            gap: 8px;
+        }
+
+        /* --- 10. Alert Box --- */
+        .alert-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .alert-icon {
+            font-size: 1.5rem;
+            color: #f59e0b;
+            margin-top: 3px;
+        }
+
+        .alert-content h4 {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+
+        .alert-content p {
+            color: #78350f;
+            font-size: 0.95rem;
+        }
+
+        /* --- 11. Footer --- */
+        footer { 
+            background-color: #111; 
+            color: #ddd; 
+            padding: 60px 0 20px; 
+            font-size: 0.9rem; 
+        }
+
+        .footer-content { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 40px; 
+        }
+
+        .footer-col h4 { 
+            color: white; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { text-decoration: underline; color: white; }
+
+        .footer-bottom {
+            border-top: 1px solid #333; 
+            padding-top: 30px;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px;
+        }
+
+        .social-links { display: flex; gap: 20px; }
+        .social-links a {
+            color: white; 
+            font-size: 1.5rem; 
+            transition: color 0.3s; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            background: #222;
+        }
+        .social-links a:hover { background: var(--gov-blue-primary); }
+
+        /* --- 12. Back to Top Button --- */
+        #backToTop {
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px;
+            background-color: var(--gov-cyan);
+            color: white;
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            font-size: 20px; 
+            cursor: pointer; 
+            border: none;
+            opacity: 0; 
+            visibility: hidden;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+            z-index: 999;
+        }
+        
+        #backToTop.show { opacity: 1; visibility: visible; transform: scale(1); }
+        #backToTop:hover { background-color: var(--gov-cyan-hover); transform: scale(1.1); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .page-header h1 { font-size: 2rem; }
+            .hamburger { display: flex; }
+
+            .nav-menu {
+                position: absolute; 
+                top: var(--header-height); 
+                left: 0; 
+                width: 100%;
+                background-color: white; 
+                flex-direction: column; 
+                align-items: flex-start;
+                padding: 0; 
+                border-bottom: 1px solid #ddd;
+                max-height: 0; 
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active { max-height: 400px; }
+            .nav-menu li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-link { display: block; padding: 15px 20px; width: 100%; }
+
+            .featured-content h2 {
+                font-size: 2rem;
+            }
+
+            .featured-content p {
+                font-size: 1rem;
+            }
+
+            .featured-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-tabs {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="usa-banner">
+        <div class="container">
+            <img src="/flags/aminoac.png" alt="Flag of Aminoac" class="flag-icon">
+            An official website of the Federal Republic of Aminoac
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <img src="/images/national-emblem.png" alt="national-emblem"> 
+                <span>FR Aminoac</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/news" class="nav-link active">News</a></li>
+                    <li><a href="/immigration" class="nav-link">Immigration</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/travel" class="nav-link">Travel</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Government News & Updates</h1>
+            <p>Stay informed about the latest developments, policies, and announcements from the Federal Government</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-list">
+                <a href="/">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>News</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="news-filter">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">All News</button>
+                <button class="filter-tab" data-category="election">Election 2026</button>
+                <button class="filter-tab" data-category="foreign">Foreign Affairs</button>
+                <button class="filter-tab" data-category="welfare">Welfare & Benefits</button>
+                <button class="filter-tab" data-category="economy">Economy</button>
+                <button class="filter-tab" data-category="health">Public Health</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="container">
+            <div class="alert-box">
+                <div class="alert-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="alert-content">
+                    <h4>Important Notice</h4>
+                    <p>Presidential Election 2026 will be held on May 30, 2026. All eligible citizens are encouraged to register and exercise their right to vote.</p>
+                </div>
+            </div>
+
+            <div class="featured-news">
+                <article class="featured-main">
+                    <a href="/news/presidential-election-2026">
+                        <div class="featured-image">
+                            <div class="featured-content">
+                                <span class="featured-badge">
+                                    <i class="fas fa-bolt"></i>
+                                    Breaking News
+                                </span>
+                                <h2>Presidential Election 2026<br>Scheduled for May 30</h2>
+                                <p>The Electoral Commission has officially announced that the 2026 Presidential Election will take place on Friday, May 30, 2026. This historic election will determine the nation's leadership for the next four years. All eligible citizens are encouraged to register and participate in this democratic process.</p>
+                                <div class="featured-meta">
+                                    <span><i class="far fa-calendar"></i> January 15, 2026</span>
+                                    <span><i class="fas fa-building"></i> Electoral Commission</span>
+                                    <span><i class="far fa-clock"></i> 3 min read</span>
+                                </div>
+                                <div style="margin-top: 25px;">
+                                    <span class="election-cta">
+                                        Learn More & Register <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Latest Updates</h2>
+            
+            <div class="news-grid" id="newsGrid">
+                <!-- Election News -->
+                <article class="news-card" data-category="election">
+                    <div class="news-thumbnail" style="background: #dc2626;">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category election">Election 2026</span>
+                        <h3 class="news-title">Voter Registration Opens Nationwide</h3>
+                        <p class="news-excerpt">Citizens aged 18 and above can now register to vote in the upcoming presidential election. Online and in-person registration available at all government offices.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 14, 2026</span>
+                            <a href="/news/voter-registration-2026" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Foreign Affairs -->
+                <article class="news-card" data-category="foreign">
+                    <div class="news-thumbnail" style="background: #10b981;">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category foreign">Foreign Affairs</span>
+                        <h3 class="news-title">President Welcomes EU Delegation</h3>
+                        <p class="news-excerpt">President hosted a high-level European Union delegation to discuss trade agreements, climate cooperation, and regional security partnerships.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 13, 2026</span>
+                            <a href="/news/eu-delegation-visit" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Welfare -->
+                <article class="news-card" data-category="welfare">
+                    <div class="news-thumbnail" style="background: #f59e0b;">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category welfare">Welfare & Benefits</span>
+                        <h3 class="news-title">Universal Basic Income Pilot Program Expanded</h3>
+                        <p class="news-excerpt">The government announces expansion of the UBI pilot program to 50,000 additional families, providing $1,200 monthly support for eligible households.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 12, 2026</span>
+                            <a href="/news/ubi-expansion-2026" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Economy -->
+                <article class="news-card" data-category="economy">
+                    <div class="news-thumbnail" style="background: #3b82f6;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category economy">Economy</span>
+                        <h3 class="news-title">GDP Growth Reaches 4.2% in Q4 2025</h3>
+                        <p class="news-excerpt">Ministry of Finance reports strong economic performance with GDP growth of 4.2% in the fourth quarter, exceeding analyst expectations of 3.8%.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 11, 2026</span>
+                            <a href="/news/gdp-growth-q4-2025" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Foreign Affairs -->
+                <article class="news-card" data-category="foreign">
+                    <div class="news-thumbnail" style="background: #10b981;">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category foreign">Foreign Affairs</span>
+                        <h3 class="news-title">Trade Agreement Signed with Pacific Nations</h3>
+                        <p class="news-excerpt">Historic trade pact signed with five Pacific nations, opening new markets for Aminoac exports and strengthening regional economic ties.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 10, 2026</span>
+                            <a href="/news/pacific-trade-agreement" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Health -->
+                <article class="news-card" data-category="health">
+                    <div class="news-thumbnail" style="background: #ef4444;">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category health">Public Health</span>
+                        <h3 class="news-title">Free Mental Health Services Launched</h3>
+                        <p class="news-excerpt">New nationwide program provides free mental health counseling and therapy services to all citizens through 200 community health centers.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 9, 2026</span>
+                            <a href="/news/mental-health-program" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Welfare -->
+                <article class="news-card" data-category="welfare">
+                    <div class="news-thumbnail" style="background: #f59e0b;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category welfare">Welfare & Benefits</span>
+                        <h3 class="news-title">Student Debt Relief Program Announced</h3>
+                        <p class="news-excerpt">Government unveils $2 billion student debt relief initiative, forgiving up to $20,000 in loans for borrowers earning under $75,000 annually.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 8, 2026</span>
+                            <a href="/news/student-debt-relief" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Economy -->
+                <article class="news-card" data-category="economy">
+                    <div class="news-thumbnail" style="background: #3b82f6;">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category economy">Economy</span>
+                        <h3 class="news-title">Green Energy Investment Plan Unveiled</h3>
+                        <p class="news-excerpt">$5 billion infrastructure plan aims to transition 60% of national energy to renewable sources by 2030, creating 50,000 new jobs.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 7, 2026</span>
+                            <a href="/news/green-energy-plan" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Foreign Affairs -->
+                <article class="news-card" data-category="foreign">
+                    <div class="news-thumbnail" style="background: #10b981;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-category foreign">Foreign Affairs</span>
+                        <h3 class="news-title">UN Peacekeeping Mission Deployment</h3>
+                        <p class="news-excerpt">Aminoac commits 500 peacekeepers to UN mission in East Africa, demonstrating continued commitment to international peace and security.</p>
+                        <div class="news-footer">
+                            <span class="news-date"><i class="far fa-calendar"></i> January 6, 2026</span>
+                            <a href="/news/un-peacekeeping-deployment" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>About Government</h4>
+                    <ul>
+                        <li><a href="/government/president">The President</a></li>
+                        <li><a href="/government/ministries">Ministries</a></li>
+                        <li><a href="/government/legislation">Legislation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/data">Data & Statistics</a></li>
+                        <li><a href="/press">Publications</a></li>
+                        <li><a href="/forms">Forms Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/legal/accessibility">Accessibility</a></li>
+                        <li><a href="/legal/terms">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Follow government updates</p>
+                <div class="social-links">
+                    <a href="https://x.com" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://space.bilibili.com/1522815623/" target="_blank" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">© 2026 Federal Republic of Aminoac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // News filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const newsCards = document.querySelectorAll('.news-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const category = tab.dataset.category;
+
+                // Filter news cards
+                newsCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

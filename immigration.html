@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of the Federal Republic of Aminoac">
+    <title>Immigration & Citizenship - Federal Republic of Aminoac</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --gov-blue-dark: #1a237e;
+            --gov-blue-primary: #000091;
+            --gov-cyan: #00acc1; 
+            --gov-cyan-hover: #00838f;
+            --bg-light: #f3f4f6;
+            --text-main: #161616;
+            --text-secondary: #505050;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
+
+        /* --- 2. Utility --- */
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; padding: 12px 24px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s ease; }
+        .btn-primary { background-color: var(--gov-blue-primary); color: white; }
+        .btn-primary:hover { background-color: var(--gov-blue-dark); transform: translateY(-1px); }
+
+        /* --- 3. Top Identity Bar --- */
+        .usa-banner { background-color: #f0f0f0; font-size: 0.75rem; padding: 8px 0; border-bottom: 1px solid #ddd; }
+        .usa-banner .container { display: flex; align-items: center; }
+        .flag-icon { width: 20px; height: auto; margin-right: 8px; display: inline-block; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
+
+        /* --- 4. Header & Navigation --- */
+        header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: var(--header-height); }
+        .logo { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1.25rem; color: var(--gov-blue-dark); }
+        .logo img { height: 45px; }
+
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-main); font-size: 0.95rem; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--gov-blue-primary); }
+        .nav-link.active::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--gov-blue-primary); }
+        
+        .desktop-search-btn { background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.1rem; transition: color 0.2s; }
+        .desktop-search-btn:hover { color: var(--gov-blue-primary); }
+
+        .mobile-controls { display: none; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--gov-blue-dark); transition: 0.3s; }
+
+        /* --- 5. Immigration Hero --- */
+        .immigration-hero { background: var(--gov-blue-dark); color: white; padding: 60px 0; }
+        .immigration-hero h1 { font-size: 2.5rem; font-weight: 800; }
+
+        /* --- 6. Status Inquiry (SQUARE UI) --- */
+        .status-box { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            margin-top: -40px; 
+            border-top: 5px solid var(--gov-blue-primary); 
+        }
+        .status-box h2 { font-size: 1.5rem; margin-bottom: 20px; color: var(--gov-blue-dark); }
+        
+        .status-input-group { display: flex; gap: 0; flex-wrap: wrap; width: 100%; } 
+        .status-input-group input { 
+            flex: 1; 
+            min-width: 280px; 
+            padding: 15px; 
+            border: 2px solid var(--gov-blue-primary); 
+            border-radius: 0; 
+            font-size: 1rem; 
+            outline: none;
+        }
+        .status-input-group .btn-primary { 
+            border-radius: 0; 
+            padding: 0 35px; 
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            height: 54px; 
+        }
+
+        /* --- 7. Service Directory --- */
+        .service-list { background: white; border-radius: 8px; margin: 40px 0; border: 1px solid var(--border-color); }
+        .service-item { display: flex; align-items: flex-start; padding: 30px; border-bottom: 1px solid var(--border-color); transition: background 0.2s; }
+        .service-item:last-child { border-bottom: none; }
+        .service-item:hover { background-color: #fcfcfc; }
+        .service-icon { font-size: 1.5rem; color: var(--gov-blue-primary); width: 60px; padding-top: 5px; }
+        .service-text h3 { color: var(--gov-blue-dark); margin-bottom: 8px; font-size: 1.3rem; }
+        .service-text p { color: var(--text-secondary); margin-bottom: 12px; max-width: 800px; }
+        .service-link { color: var(--gov-blue-primary); font-weight: 600; font-size: 0.95rem; text-decoration: underline; }
+
+        /* Deportation & Removal Search professional style (Kept from previous update) */
+        .warning-notice { background-color: #f0f7ff; border-left: 4px solid var(--gov-blue-primary); padding: 25px; margin-bottom: 40px; border-radius: 0 4px 4px 0; }
+        .warning-notice h3 { color: var(--gov-blue-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+
+        /* --- 8. Search Overlay --- */
+        .search-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.98); z-index: 2000; display: none; flex-direction: column; align-items: center; padding-top: 100px; animation: fadeIn 0.2s ease-out; }
+        .search-overlay.active { display: flex; }
+        .search-close { position: absolute; top: 30px; right: 30px; font-size: 2rem; cursor: pointer; background: none; border: none; }
+        .search-container { width: 100%; max-width: 700px; padding: 0 20px; }
+        .search-input-lg { width: 100%; border: none; border-bottom: 2px solid var(--gov-blue-primary); font-size: 2rem; padding: 15px 0; background: transparent; outline: none; }
+        .search-results { margin-top: 40px; max-height: 60vh; overflow-y: auto; width: 100%; }
+        .result-item { display: block; padding: 20px; border-bottom: 1px solid #eee; }
+        .result-tag { font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: var(--gov-blue-primary); }
+
+        /* --- 9. Footer --- */
+        footer { background-color: #111; color: #ddd; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { text-decoration: underline; color: white; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { color: white; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #222; }
+        .social-links a:hover { background: var(--gov-blue-primary); }
+
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background-color: var(--gov-cyan); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; border: none; opacity: 0; visibility: hidden; transform: scale(0); transition: all 0.3s; z-index: 999; }
+        #backToTop.show { opacity: 1; visibility: visible; transform: scale(1); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- 10. Responsive & Language Fix --- */
+        @media (max-width: 900px) {
+            .hamburger { display: flex; }
+            .desktop-search-btn { display: none; }
+            .nav-menu { position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: white; flex-direction: column; align-items: flex-start; padding: 0; border-bottom: 1px solid #ddd; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; box-shadow: 0 10px 10px rgba(0,0,0,0.05); }
+            .nav-menu.active { max-height: 800px; } 
+            .nav-menu li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-link { display: block; padding: 15px 20px; width: 100%; }
+            .mobile-controls { display: block; width: 100%; padding: 20px; background-color: #f9fafb; }
+            .mobile-search { display: flex; margin-bottom: 15px; }
+            .mobile-search input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; }
+            .mobile-search button { padding: 10px 15px; background: var(--gov-blue-primary); color: white; border: none; border-radius: 0 4px 4px 0; }
+            
+            .lang-btn { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background: white; text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: bold; }
+            .lang-menu { display: none; flex-direction: column; background: white; border: 1px solid #ccc; margin-top: 5px; border-radius: 4px; overflow: hidden; }
+            .lang-menu.active { display: flex; }
+            .lang-menu a { padding: 10px 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; font-size: 0.9rem; color: var(--gov-blue-dark); }
+            .lang-menu a:last-child { border-bottom: none; }
+            .lang-menu a:hover { background-color: var(--gov-blue-primary); color: white; }
+            .lang-menu img { width: 20px; height: 14px; object-fit: cover; border: 1px solid rgba(0,0,0,0.1); }
+
+            .status-box { padding: 20px; }
+            .status-input-group input { min-width: 100%; width: 100%; margin-bottom: 10px; }
+            .status-input-group .btn-primary { width: 100%; }
+            
+            .service-item { flex-direction: column; }
+            .service-icon { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="searchOverlay" class="search-overlay">
+        <button class="search-close" id="searchClose">×</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input-lg" placeholder="Search for Green Card, Asylum, TR..." autofocus>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <div class="usa-banner">
+        <div class="container">
+            <img src="/flags/aminoac.png" alt="Flag" class="flag-icon">
+            An official website of the Federal Republic of Aminoac
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <img src="images/national-emblem.png" alt="national-emblem"> 
+                <span>FR Aminoac</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="mobile-controls">
+                        <div class="mobile-search">
+                            <input type="text" id="mobileSearchInput" placeholder="Search immigration info...">
+                            <button id="mobileSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-btn" aria-haspopup="true" aria-expanded="false">Language <i class="fas fa-chevron-down"></i></button>
+                            <div class="lang-menu" aria-label="Select language">
+                                <a href="/an"><img src="flags/aminoac.png" alt="Aminoac"> Aminoac</a>
+                                <a href="/index.html"><img src="flags/uk.png" alt="English"> English</a>
+                                <a href="/ru"><img src="flags/ru.png" alt="Русский"> Русский</a>
+                                <a href="/fr"><img src="flags/fr.png" alt="Français"> Français</a>
+                                <a href="/zh"><img src="flags/cn.png" alt="简体中文"> 简体中文</a>
+                                <a href="/zh-tw"><img src="flags/tw.png" alt="繁體中文（台湾）"> 繁體中文（台湾）</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/news" class="nav-link">News</a></li>
+                    <li><a href="/immigration" class="nav-link active">Immigration</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/travel" class="nav-link">Travel</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button class="desktop-search-btn" id="desktopSearchTrigger">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="immigration-hero">
+        <div class="container">
+            <h1>Immigration & Citizenship</h1>
+            <p>Official portal for visas, permanent residency, and nationality services.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="status-box">
+            <h2>Check Your Application Status</h2>
+            <div class="status-input-group">
+                <input type="text" placeholder="Enter 13-digit Receipt Number (e.g. AMN1234567890)">
+                <button class="btn btn-primary">Check Status</button>
+            </div>
+        </div>
+
+        <div class="warning-notice" style="margin-top: 40px;">
+            <h3><i class="fas fa-gavel"></i> Deportation & Removal Search</h3>
+            <p>Access the legal database to check for outstanding removal orders or deportation warrants. Contact the Ministry of Justice for legal assistance.</p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <a href="/removal-verify" class="service-link">Verify Removal Order Status</a>
+                <a href="/legal-aid" class="service-link">Legal Aid Services</a>
+                <a href="/justice-contact" class="service-link">Contact Ministry of Justice</a>
+            </div>
+        </div>
+
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-clock"></i></div>
+                <div class="service-text">
+                    <h3>Temporary Residence (TR)</h3>
+                    <p>Information on work permits, student visas, and digital nomad permits for those planning to stay up to 24 months.</p>
+                    <a href="/immigration/temporary-residence" class="service-link">View Categories</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-id-card"></i></div>
+                <div class="service-text">
+                    <h3>Permanent Residence (Green Card)</h3>
+                    <p>Pathways to permanent legal residency through investment, high-skill employment, or family reunification.</p>
+                    <a href="/immigration/green-card" class="service-link">Application Requirements</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+                <div class="service-text">
+                    <h3>Political Asylum</h3>
+                    <p>Apply for legal protection if you fear persecution in your home country. Strictly for individuals already within Aminoac borders.</p>
+                    <a href="/immigration/asylum" class="service-link">Legal Process Guide</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-hands-holding-circle"></i></div>
+                <div class="service-text">
+                    <h3>Refugee Status</h3>
+                    <p>Humanitarian resettlement programs for individuals located outside of Aminoac who are fleeing conflict or hardship.</p>
+                    <a href="/immigration/refugee-status" class="service-link">Resettlement Programs</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-flag"></i></div>
+                <div class="service-text">
+                    <h3>Naturalization (Citizenship)</h3>
+                    <p>Apply to become a full citizen of the Federal Republic of Aminoac after completing the required residency period.</p>
+                    <a href="/immigration/visa" class="service-link">Citizenship Test Information</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>About Government</h4>
+                    <ul>
+                        <li><a href="/government/president">The President</a></li>
+                        <li><a href="/government/ministries">Ministries</a></li>
+                        <li><a href="/government/legislation">Legislation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/data">Data & Statistics</a></li>
+                        <li><a href="/press">Publications</a></li>
+                        <li><a href="/forms">Forms Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/legal/accessibility">Accessibility</a></li>
+                        <li><a href="/legal/terms">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Follow government updates</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-bilibili"></i></a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">© 2026 Federal Republic of Aminoac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        const siteContent = [
+            { title: "Political Asylum", type: "Immigration", desc: "Request protection within Aminoac.", url: "/immigration" },
+            { title: "Green Card", type: "Immigration", desc: "Apply for legal PR status.", url: "/immigration" },
+            { title: "Citizenship", type: "Immigration", desc: "Become a full citizen.", url: "/immigration" },
+            { title: "TR", type: "Immigration", desc: "Short-term permits.", url: "/immigration" }
+        ];
+
+        // Search & Nav Logic
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        function openSearch(query = '') {
+            searchOverlay.classList.add('active');
+            searchInput.value = query;
+            searchInput.focus();
+            if(query) performSearch(query);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            searchResults.innerHTML = '';
+        }
+
+        function performSearch(query) {
+            const lowerQuery = query.toLowerCase();
+            const filtered = siteContent.filter(item => 
+                item.title.toLowerCase().includes(lowerQuery) || item.desc.toLowerCase().includes(lowerQuery)
+            );
+            searchResults.innerHTML = filtered.length > 0 ? filtered.map(item => `
+                <a href="${item.url}" class="result-item">
+                    <span class="result-tag">${item.type}</span>
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-desc">${item.desc}</div>
+                </a>
+            `).join('') : '<p style="text-align:center; padding:20px;">No results found.</p>';
+        }
+
+        document.getElementById('desktopSearchTrigger').onclick = () => openSearch();
+        document.getElementById('searchClose').onclick = closeSearch;
+        searchInput.oninput = (e) => performSearch(e.target.value);
+
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.onclick = () => navMenu.classList.toggle('active');
+
+        const langBtn = document.querySelector('.lang-btn');
+        const langMenu = document.querySelector('.lang-menu');
+        if(langBtn) { langBtn.onclick = () => langMenu.classList.toggle('active'); }
+
+        document.getElementById('mobileSearchBtn').onclick = () => {
+            openSearch(document.getElementById('mobileSearchInput').value);
+        };
+
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add("show");
+            else backToTopBtn.classList.remove("show");
+        };
+        backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    </script>
+</body>
+</html>

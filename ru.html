@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Официальный сайт Федеративной Республики Аминоак">
+    <title>Федеративная Республика Аминоак - Официальный сайт</title>
+    
+    <link rel="alternate" hreflang="en" href="https://aminoac.org/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aminoac.org/zh" />
+    <link rel="alternate" hreflang="zh-Hant-TW" href="https://aminoac.org/zh-tw" />
+    <link rel="alternate" hreflang="ru" href="https://aminoac.org/ru" />
+    <link rel="alternate" hreflang="x-default" href="https://aminoac.org/" />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --gov-blue-dark: #1a237e;
+            --gov-blue-primary: #000091;
+            --gov-cyan: #00acc1; 
+            --gov-cyan-hover: #00838f;
+            --bg-light: #f3f4f6;
+            --text-main: #161616;
+            --text-secondary: #505050;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
+
+        /* --- 2. Utility Components --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--gov-blue-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gov-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        /* --- 3. Top Identity Bar --- */
+        .usa-banner {
+            background-color: #f0f0f0;
+            font-size: 0.75rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .usa-banner .container { display: flex; align-items: center; }
+        
+        .flag-icon {
+            width: 20px; 
+            height: auto;
+            margin-right: 8px; 
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* --- 4. Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 15px;
+            font-weight: 700; font-size: 1.25rem; color: var(--gov-blue-dark);
+        }
+        .logo img { height: 45px; }
+
+        /* Desktop Nav */
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-main); font-size: 0.95rem; position: relative; }
+        .nav-link:hover { color: var(--gov-blue-primary); }
+        
+        /* Search Trigger (Desktop) */
+        .desktop-search-btn {
+            background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .desktop-search-btn:hover { color: var(--gov-blue-primary); }
+
+        /* Mobile specific elements (Hidden on Desktop) */
+        .mobile-controls { display: none; }
+
+        /* Desktop specific header actions */
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+        .lang-switch a { font-size: 0.85rem; color: var(--gov-blue-primary); font-weight: 600; margin: 0 5px;}
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001;
+        }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--gov-blue-dark); transition: 0.3s; }
+
+        /* --- 5. Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--gov-blue-dark) 0%, var(--gov-blue-primary) 100%);
+            color: white; padding: 80px 0; position: relative; overflow: hidden;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; font-weight: 800; }
+        .hero p { font-size: 1.25rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; }
+
+        /* --- 6. Sections General --- */
+        section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+        section:nth-child(even) { background-color: white; }
+        section h2 { font-size: 2rem; color: var(--gov-blue-dark); margin-bottom: 15px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        
+        /* --- 7. Services Grid --- */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+        }
+        .service-card {
+            background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 25px;
+            transition: all 0.3s ease; display: block;
+        }
+        .service-card:hover {
+            border-color: var(--gov-blue-primary); box-shadow: 0 10px 20px rgba(0,0,0,0.08); transform: translateY(-5px);
+        }
+        .service-card h3 { color: var(--gov-blue-primary); font-size: 1.2rem; margin-bottom: 10px; }
+        .service-card p { font-size: 0.9rem; color: var(--text-secondary); }
+        .arrow-icon { margin-top: 15px; font-size: 1.2rem; color: var(--gov-blue-primary); text-align: right;}
+
+        /* --- 8. Contact Form --- */
+        .contact-form { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
+
+        /* --- 9. Footer --- */
+        footer { background-color: #111; color: #ddd; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { text-decoration: underline; color: white; }
+
+        .footer-bottom {
+            border-top: 1px solid #333; padding-top: 30px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a {
+            color: white; font-size: 1.5rem; transition: color 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #222;
+        }
+        .social-links a:hover { background: var(--gov-blue-primary); }
+
+        /* --- 10. Back to Top Button --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--gov-cyan);
+            color: white;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 20px; cursor: pointer; border: none;
+            opacity: 0; visibility: hidden;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999;
+        }
+        
+        #backToTop.show { opacity: 1; visibility: visible; transform: scale(1); }
+        #backToTop:hover { background-color: var(--gov-cyan-hover); transform: scale(1.1); }
+
+        /* --- 11. Search Overlay System --- */
+        .search-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        .search-overlay.active { display: flex; }
+
+        .search-close {
+            position: absolute; top: 30px; right: 30px;
+            font-size: 2rem; cursor: pointer; color: var(--text-secondary);
+            background: none; border: none;
+        }
+
+        .search-container { width: 100%; max-width: 700px; padding: 0 20px; }
+
+        .search-input-lg {
+            width: 100%; border: none; border-bottom: 2px solid var(--gov-blue-primary);
+            font-size: 2rem; padding: 15px 0; background: transparent; outline: none;
+            color: var(--gov-blue-dark); font-weight: 300;
+        }
+
+        .search-results { margin-top: 40px; max-height: 60vh; overflow-y: auto; }
+
+        .result-item {
+            display: block; padding: 20px; border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+        .result-item:hover { background-color: #f9f9f9; }
+        .result-tag {
+            font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+            color: var(--gov-blue-primary); margin-bottom: 5px; display: inline-block;
+        }
+        .result-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+        .result-desc { font-size: 0.9rem; color: var(--text-secondary); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hamburger { display: flex; }
+            .header-actions { display: none; }
+            /* Hide desktop search button on mobile */
+            .desktop-search-btn { display: none; }
+
+            .nav-menu {
+                position: absolute; top: var(--header-height); left: 0; width: 100%;
+                background-color: white; flex-direction: column; align-items: flex-start;
+                padding: 0; border-bottom: 1px solid #ddd;
+                max-height: 0; overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active { max-height: 600px; }
+
+            .nav-menu li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-link { display: block; padding: 15px 20px; width: 100%; }
+
+            .mobile-controls {
+                display: block; width: 100%; padding: 20px; background-color: #f9fafb;
+            }
+
+            .mobile-search { display: flex; margin-bottom: 15px; }
+            .mobile-search input { 
+                flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px;
+            }
+            .mobile-search button {
+                padding: 10px 15px; background: var(--gov-blue-primary); color: white; border: none; border-radius: 0 4px 4px 0;
+            }
+
+            .lang-dropdown {
+                position: relative;
+            }
+
+            .lang-btn {
+                width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background: white; text-align: left;
+                cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+                font-weight: bold;
+            }
+            .lang-btn:hover { background-color: #f0f0f0; }
+
+            .lang-menu {
+                display: none; position: relative; margin-top: 5px;
+                background: white; border: 1px solid #ccc; border-radius: 4px; overflow: hidden;
+                flex-direction: column;
+            }
+            .lang-menu.active { display: flex; }
+            .lang-menu a {
+                padding: 8px 10px; display: flex; align-items: center; gap: 8px;
+                border-bottom: 1px solid #eee; color: var(--gov-blue-dark); font-size: 0.9rem;
+            }
+            .lang-menu a:last-child { border-bottom: none; }
+            .lang-menu a:hover { background-color: var(--gov-blue-primary); color: white; }
+            .lang-menu img { width: 20px; height: 14px; object-fit: cover; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="searchOverlay" class="search-overlay">
+        <button class="search-close" id="searchClose">&times;</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input-lg" placeholder="Введите для поиска услуг, новостей..." autofocus>
+            <div id="searchResults" class="search-results">
+                </div>
+        </div>
+    </div>
+
+    <div class="usa-banner">
+        <div class="container">
+            <img src="/flags/aminoac.png" alt="Флаг Аминоак" class="flag-icon">
+            Официальный сайт Федеративной Республики Аминоак
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/ru" class="logo">
+                <img src="/images/national-emblem.png" alt="Государственный герб"> 
+                <span>ФР Аминоак</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="mobile-controls">
+                        <div class="mobile-search">
+                            <input type="text" id="mobileSearchInput" placeholder="Поиск правительственной информации..." aria-label="Поиск правительственной информации">
+                            <button aria-label="Поиск" id="mobileSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-btn" aria-haspopup="true" aria-expanded="false">
+                                Язык <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="lang-menu" aria-label="Выберите язык">
+                                <a href="/an"><img src="/flags/aminoac.png" alt="Аминоак"> Aminoac</a>
+                                <a href="/"><img src="/flags/uk.png" alt="Английский"> English</a>
+                                <a href="/ru"><img src="/flags/ru.png" alt="Русский"> Русский</a>
+                                <a href="/fr"><img src="/flags/fr.png" alt="Французский"> Français</a>
+                                <a href="/zh"><img src="/flags/cn.png" alt="Китайский упрощённый"> 简体中文</a>
+                                <a href="/zh-tw"><img src="/flags/tw.png" alt="Китайский традиционный (Тайвань)"> 繁體中文（台灣）</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/ru" class="nav-link">Главная</a></li>
+                    <li><a href="/ru/news" class="nav-link">Новости</a></li>
+                    <li><a href="/ru/immigration" class="nav-link">Иммиграция</a></li>
+                    <li><a href="/ru/services" class="nav-link">Услуги</a></li>
+                    <li><a href="/ru/travel" class="nav-link">Путешествия</a></li>
+                    <li><a href="/ru/contact" class="nav-link">Контакты</a></li>
+                    
+                    <li>
+                        <button class="desktop-search-btn" id="desktopSearchTrigger" aria-label="Открыть поиск">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Строим будущее<br>для каждого гражданина</h1>
+                <p>Добро пожаловать на официальный портал Аминоак. Найдите государственные услуги, подайте заявку на визу и будьте в курсе национальной политики.</p>
+                <a href="/ru/services" class="btn btn-primary" style="background: white; color: var(--gov-blue-primary);">Обзор услуг</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="news">
+        <div class="container">
+            <div class="section-header">
+                <h2>Правительственные новости</h2>
+                <p>Последние новости от Аппарата Премьер-министра</p>
+            </div>
+            <div class="services-grid">
+                <a href="/ru/news/economic-policy-2026" class="service-card">
+                    <small style="color:var(--gov-blue-primary); font-weight:bold;">ПРЕСС-РЕЛИЗ</small>
+                    <h3>Новая экономическая политика 2026</h3>
+                    <p>Министерство финансов объявляет новые меры по поддержке местного бизнеса.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+                <a href="/ru/news/health-update" class="service-card">
+                    <small style="color:var(--gov-blue-primary); font-weight:bold;">ОБЩЕСТВЕННОЕ ЗДОРОВЬЕ</small>
+                    <h3>Зимняя программа вакцинации</h3>
+                    <p>Клиники по всей стране Аминоак открыты для ежегодной программы прививок от гриппа.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+                <a href="/ru/news/education-grants" class="service-card">
+                    <small style="color:var(--gov-blue-primary); font-weight:bold;">ОБРАЗОВАНИЕ</small>
+                    <h3>Университетские гранты доступны</h3>
+                    <p>Заявки на Национальную стипендиальную программу теперь принимаются.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background-color: #f8f9fa;">
+        <div class="container">
+<div class="section-header">
+                <h2>Государственные услуги</h2>
+                <p>Доступ к наиболее востребованным услугам онлайн</p>
+            </div>
+            
+            <div class="services-grid">
+                <a href="/ru/services/national-insurance" class="service-card">
+                    <h3><i class="fas fa-file-medical-alt"></i> Национальное страхование</h3>
+                    <p>Подать заявку на страхование, проверить взносы и получить льготы.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+                <a href="/ru/services/taxes" class="service-card">
+                    <h3><i class="fas fa-coins"></i> Оплата налогов</h3>
+                    <p>Подайте годовую декларацию о доходах или безопасно оплатите корпоративные налоги.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+                <a href="/ru/immigration/visa" class="service-card">
+                    <h3><i class="fas fa-passport"></i> Визы и иммиграция</h3>
+                    <p>Подать заявку на вид на жительство, разрешение на работу или экзамен на гражданство.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+                <a href="/ru/services/employment" class="service-card">
+                    <h3><i class="fas fa-briefcase"></i> Занятость</h3>
+                    <p>Найти работу, поддержка безработных и трудовое законодательство.</p>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Свяжитесь с нами</h2>
+                <p>Свяжитесь с нашими ведомствами</p>
+            </div>
+            <form action="/ru/contact/submit" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label>Полное имя</label>
+                    <input type="text" class="form-control" placeholder="Иван Иванов" required>
+                </div>
+                <div class="form-group">
+                    <label>Адрес электронной почты</label>
+                    <input type="email" class="form-control" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Сообщение</label>
+                    <textarea class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%">Отправить сообщение</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>О правительстве</h4>
+                    <ul>
+                        <li><a href="/ru/government/president">Президент</a></li>
+                        <li><a href="/ru/government/ministries">Министерства</a></li>
+                        <li><a href="/ru/government/legislation">Законодательство</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ресурсы</h4>
+                    <ul>
+                        <li><a href="/ru/data">Данные и статистика</a></li>
+                        <li><a href="/ru/press">Публикации</a></li>
+                        <li><a href="/ru/forms">Библиотека форм</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Юридическая информация</h4>
+                    <ul>
+                        <li><a href="/ru/legal/privacy">Политика конфиденциальности</a></li>
+                        <li><a href="/ru/legal/accessibility">Доступность</a></li>
+                        <li><a href="/ru/legal/terms">Условия использования</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Следите за обновлениями правительства</p>
+                <div class="social-links">
+                    <a href="https://x.com" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://space.bilibili.com/1522815623/" target="_blank" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">© 2026 Федеративная Республика Аминоак. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <button id="backToTop" title="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- Search Functionality ---
+        const siteContent = [
+            { title: "Новая экономическая политика 2026", type: "Новости", desc: "Меры по поддержке местного бизнеса.", url: "/ru/news/economic-policy-2026" },
+            { title: "Зимняя программа вакцинации", type: "Здоровье", desc: "Места программы прививок от гриппа.", url: "/ru/news/health-update" },
+            { title: "Университетские гранты", type: "Образование", desc: "Национальная стипендиальная программа.", url: "/ru/news/education-grants" },
+            { title: "Национальное страхование", type: "Услуга", desc: "Взносы и льготы.", url: "/ru/services/national-insurance" },
+            { title: "Оплата налогов", type: "Услуга", desc: "Налог на доходы и корпоративный налог.", url: "/ru/services/taxes" },
+            { title: "Визы и иммиграция", type: "Иммиграция", desc: "Вид на жительство и разрешение на работу.", url: "/ru/immigration/visa" },
+            { title: "Услуги занятости", type: "Услуга", desc: "Вакансии и трудовое законодательство.", url: "/ru/services/employment" },
+            { title: "Продление паспорта", type: "Услуга", desc: "Услуги по оформлению проездных документов.", url: "/ru/travel" },
+            { title: "Связаться с правительством", type: "Контакт", desc: "Свяжитесь с нами.", url: "/ru/contact" }
+        ];
+
+        const searchOverlay = document.getElementById('searchOverlay');
+        const desktopSearchTrigger = document.getElementById('desktopSearchTrigger');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        // Mobile Search Elements
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+        // Open Overlay
+        function openSearch(initialQuery = '') {
+            searchOverlay.classList.add('active');
+            searchInput.value = initialQuery;
+            searchInput.focus();
+            if(initialQuery) performSearch(initialQuery);
+        }
+
+        // Close Overlay
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        }
+
+        // Search Logic
+        function performSearch(query) {
+            const lowerQuery = query.toLowerCase();
+            const filtered = siteContent.filter(item => 
+                item.title.toLowerCase().includes(lowerQuery) || 
+                item.desc.toLowerCase().includes(lowerQuery)
+            );
+
+            searchResults.innerHTML = filtered.length > 0 ? filtered.map(item => `
+                <a href="${item.url}" class="result-item">
+                    <span class="result-tag">${item.type}</span>
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-desc">${item.desc}</div>
+                </a>
+            `).join('') : '<div style="text-align:center; color:#666; padding:20px;">Результаты не найдены.</div>';
+            
+            if(query === '') searchResults.innerHTML = '';
+        }
+
+        // Event Listeners for Search
+        desktopSearchTrigger.addEventListener('click', () => openSearch());
+        searchClose.addEventListener('click', closeSearch);
+        
+        // Input Listener
+        searchInput.addEventListener('input', (e) => performSearch(e.target.value));
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSearch();
+        });
+
+        // Mobile Search Logic
+        mobileSearchBtn.addEventListener('click', () => {
+            const query = mobileSearchInput.value;
+            if(query) openSearch(query);
+        });
+        
+        // Mobile Input Enter Key
+        mobileSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                openSearch(mobileSearchInput.value);
+            }
+        });
+
+
+        // --- Existing Hamburger Menu Logic ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const langBtn = document.querySelector('.lang-btn');
+        const langMenu = document.querySelector('.lang-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        }));
+
+        langBtn.addEventListener('click', () => {
+            langMenu.classList.toggle('active');
+            const expanded = langBtn.getAttribute('aria-expanded') === 'true' || false;
+            langBtn.setAttribute('aria-expanded', !expanded);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+                langMenu.classList.remove('active');
+                langBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // --- Back to Top Logic ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

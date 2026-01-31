@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Travel Services - Federal Republic of Aminoac">
+    <title>Travel & Visa Services - Federal Republic of Aminoac</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Variables & Reset */
+        :root {
+            --gov-blue-dark: #1a237e;
+            --gov-blue-primary: #000091;
+            --gov-cyan: #00acc1; 
+            --gov-cyan-hover: #00838f;
+            --bg-light: #f5f7fa;
+            --text-main: #161616;
+            --text-secondary: #505050;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
+            --container-width: 1200px;
+            --header-height: 80px;
+            --warning-red: #c41e3a;
+            --warning-orange: #ff8c00;
+            --success-green: #2e7d32;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
+
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; padding: 12px 24px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s ease; border-radius: 4px; }
+        .btn-primary { background-color: var(--gov-blue-primary); color: white; }
+        .btn-primary:hover { background-color: var(--gov-blue-dark); }
+
+        /* Top Identity Bar */
+        .usa-banner { background-color: #f0f0f0; font-size: 0.75rem; padding: 8px 0; border-bottom: 1px solid #ddd; }
+        .usa-banner .container { display: flex; align-items: center; }
+        .flag-icon { width: 20px; height: auto; margin-right: 8px; display: inline-block; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
+
+        /* Header & Navigation */
+        header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: var(--header-height); }
+        .logo { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1.25rem; color: var(--gov-blue-dark); }
+        .logo img { height: 45px; }
+
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-main); font-size: 0.95rem; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--gov-blue-primary); }
+        
+        .desktop-search-btn { background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.1rem; transition: color 0.2s; }
+        .desktop-search-btn:hover { color: var(--gov-blue-primary); }
+
+        .mobile-controls { display: none; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--gov-blue-dark); transition: 0.3s; }
+
+        /* Travel Hero */
+        .travel-hero { background: linear-gradient(135deg, var(--gov-blue-dark) 0%, #283593 100%); color: white; padding: 60px 0; }
+        .travel-hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; }
+        .travel-hero p { font-size: 1.1rem; opacity: 0.95; }
+
+        /* Visa-Free Country Checker */
+        .visa-checker-box { 
+            background: white; 
+            padding: 50px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            margin-top: -40px; 
+            margin-bottom: 40px;
+        }
+        
+        .visa-checker-box h2 { 
+            font-size: 1.8rem; 
+            margin-bottom: 12px; 
+            color: var(--gov-blue-dark);
+        }
+
+        .visa-checker-box > p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .country-search-input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            font-size: 1.05rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .country-search-input:focus {
+            border-color: var(--gov-blue-primary);
+            box-shadow: 0 0 0 3px rgba(0, 0, 145, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .country-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 350px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .country-dropdown.show {
+            display: block;
+        }
+
+        .country-option {
+            padding: 14px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .country-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .country-option:last-child {
+            border-bottom: none;
+        }
+
+        .country-flag {
+            width: 28px;
+            height: 20px;
+            object-fit: cover;
+            border: 1px solid rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .country-name {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .checker-result {
+            display: none;
+            padding: 25px;
+            margin-top: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .checker-result.show {
+            display: block;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .result-flag {
+            width: 48px;
+            height: 34px;
+            object-fit: cover;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .checker-result h3 {
+            color: var(--gov-blue-dark);
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .visa-status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .visa-status-badge.visa-free {
+            background: #e8f5e9;
+            color: var(--success-green);
+        }
+
+        .visa-status-badge.visa-required {
+            background: #ffebee;
+            color: var(--warning-red);
+        }
+
+        .checker-result p {
+            margin: 0;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Service Categories */
+        .service-category {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .category-header {
+            background: #f8f9fa;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .category-header h2 {
+            color: var(--gov-blue-dark);
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .category-header p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            margin: 0;
+        }
+
+        .service-list { background: white; }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+
+        .service-item:last-child { border-bottom: none; }
+        .service-item:hover { background-color: #fafbfc; }
+
+        .service-icon {
+            font-size: 1.6rem;
+            color: var(--gov-blue-primary);
+            width: 65px;
+            padding-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .service-text { flex: 1; }
+
+        .service-text h3 {
+            color: var(--gov-blue-dark);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .service-text p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            max-width: 800px;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            color: var(--gov-blue-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: underline;
+        }
+
+        .service-link:hover { color: var(--gov-blue-dark); }
+
+        /* Travel Advisory Section */
+        .advisory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .advisory-card {
+            padding: 25px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .advisory-card h4 {
+            color: var(--gov-blue-dark);
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .advisory-card .level-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border-radius: 4px;
+        }
+
+        .advisory-card.level-1 .level-badge { background: var(--success-green); color: white; }
+        .advisory-card.level-2 .level-badge { background: #ffa726; color: white; }
+        .advisory-card.level-3 .level-badge { background: var(--warning-orange); color: white; }
+        .advisory-card.level-4 .level-badge { background: var(--warning-red); color: white; }
+
+        .advisory-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Quick Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: white;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--gov-blue-primary);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        footer { background-color: #111; color: #ddd; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { text-decoration: underline; color: white; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { color: white; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #222; }
+        .social-links a:hover { background: var(--gov-blue-primary); }
+
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background-color: var(--gov-cyan); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; border: none; opacity: 0; visibility: hidden; transform: scale(0); transition: all 0.3s; z-index: 999; font-size: 20px; }
+        #backToTop.show { opacity: 1; visibility: visible; transform: scale(1); }
+        #backToTop:hover { background-color: var(--gov-cyan-hover); transform: scale(1.1); }
+
+        /* Search Overlay */
+        .search-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.98); z-index: 2000; display: none; flex-direction: column; align-items: center; padding-top: 100px; animation: fadeIn 0.2s ease-out; }
+        .search-overlay.active { display: flex; }
+        .search-close { position: absolute; top: 30px; right: 30px; font-size: 2rem; cursor: pointer; background: none; border: none; color: var(--text-secondary); }
+        .search-container { width: 100%; max-width: 700px; padding: 0 20px; }
+        .search-input-lg { width: 100%; border: none; border-bottom: 2px solid var(--gov-blue-primary); font-size: 2rem; padding: 15px 0; background: transparent; outline: none; color: var(--gov-blue-dark); font-weight: 300; }
+        .search-results { margin-top: 40px; max-height: 60vh; overflow-y: auto; width: 100%; }
+        .result-item { display: block; padding: 20px; border-bottom: 1px solid #eee; transition: background 0.2s; }
+        .result-item:hover { background-color: #f9f9f9; }
+        .result-tag { font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: var(--gov-blue-primary); margin-bottom: 5px; display: inline-block; }
+        .result-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+        .result-desc { font-size: 0.9rem; color: var(--text-secondary); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .travel-hero h1 { font-size: 2rem; }
+            .hamburger { display: flex; }
+            .desktop-search-btn { display: none; }
+
+            .nav-menu { position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: white; flex-direction: column; align-items: flex-start; padding: 0; border-bottom: 1px solid #ddd; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; box-shadow: 0 10px 10px rgba(0,0,0,0.05); }
+            .nav-menu.active { max-height: 800px; }
+            .nav-menu li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-link { display: block; padding: 15px 20px; width: 100%; }
+
+            .mobile-controls { display: block; width: 100%; padding: 20px; background-color: #f9fafb; }
+            .mobile-search { display: flex; margin-bottom: 15px; }
+            .mobile-search input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; }
+            .mobile-search button { padding: 10px 15px; background: var(--gov-blue-primary); color: white; border: none; border-radius: 0 4px 4px 0; }
+
+            .lang-btn { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background: white; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: bold; }
+            .lang-menu { display: none; flex-direction: column; background: white; border: 1px solid #ccc; margin-top: 5px; border-radius: 4px; overflow: hidden; }
+            .lang-menu.active { display: flex; }
+            .lang-menu a { padding: 10px 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; font-size: 0.9rem; color: var(--gov-blue-dark); }
+            .lang-menu a:last-child { border-bottom: none; }
+            .lang-menu a:hover { background-color: var(--gov-blue-primary); color: white; }
+            .lang-menu img { width: 20px; height: 14px; object-fit: cover; border: 1px solid rgba(0,0,0,0.1); }
+
+            .visa-checker-box { padding: 25px; }
+
+            .service-item { flex-direction: column; padding: 20px; }
+            .service-icon { margin-bottom: 10px; }
+            .advisory-grid { grid-template-columns: 1fr; padding: 20px; }
+            .stats-grid { grid-template-columns: 1fr; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="searchOverlay" class="search-overlay">
+        <button class="search-close" id="searchClose">×</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input-lg" placeholder="Search for visas, travel advisories..." autofocus>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <div class="usa-banner">
+        <div class="container">
+            <img src="/flags/aminoac.png" alt="Flag" class="flag-icon">
+            An official website of the Federal Republic of Aminoac
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <img src="images/national-emblem.png" alt="national-emblem"> 
+                <span>FR Aminoac</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="mobile-controls">
+                        <div class="mobile-search">
+                            <input type="text" id="mobileSearchInput" placeholder="Search travel info...">
+                            <button id="mobileSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-btn" aria-haspopup="true" aria-expanded="false">Language <i class="fas fa-chevron-down"></i></button>
+                            <div class="lang-menu" aria-label="Select language">
+                                <a href="/an"><img src="flags/aminoac.png" alt="Aminoac"> Aminoac</a>
+                                <a href="/index.html"><img src="flags/uk.png" alt="English"> English</a>
+                                <a href="/ru"><img src="flags/ru.png" alt="Русский"> Русский</a>
+                                <a href="/fr"><img src="flags/fr.png" alt="Français"> Français</a>
+                                <a href="/zh"><img src="flags/cn.png" alt="简体中文"> 简体中文</a>
+                                <a href="/zh-tw"><img src="flags/tw.png" alt="繁體中文（台湾）"> 繁體中文（台湾）</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/news" class="nav-link">News</a></li>
+                    <li><a href="/immigration" class="nav-link">Immigration</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/travel" class="nav-link active">Travel</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button class="desktop-search-btn" id="desktopSearchTrigger">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="travel-hero">
+        <div class="container">
+            <h1>Travel & Visa Services</h1>
+            <p>Official portal for visas, passport services, and international travel information</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Visa-Free Country Checker -->
+        <div class="visa-checker-box">
+            <h2><i class="fas fa-globe-americas"></i> Visa Requirements Checker</h2>
+            <p>Search for your country or region to check visa requirements for entering the Federal Republic of Aminoac.</p>
+            
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input 
+                    type="text" 
+                    id="countrySearchInput" 
+                    class="country-search-input" 
+                    placeholder="Search country or region..."
+                    autocomplete="off"
+                >
+                <div id="countryDropdown" class="country-dropdown"></div>
+            </div>
+
+            <div id="checkerResult" class="checker-result">
+                <div class="result-header">
+                    <img id="resultFlag" class="result-flag" src="" alt="">
+                    <h3 id="resultCountry"></h3>
+                </div>
+                <span id="visaStatusBadge" class="visa-status-badge"></span>
+                <p id="resultText"></p>
+            </div>
+        </div>
+
+        <!-- Travel Statistics -->
+        <div class="service-category">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Visa-Free Countries</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Consular Support</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">48hrs</div>
+                    <div class="stat-label">Emergency Passport Processing</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">85+</div>
+                    <div class="stat-label">Diplomatic Missions Worldwide</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visa Services -->
+        <div class="service-category" id="visa-services">
+            <div class="category-header">
+                <h2>Visa Services</h2>
+                <p>Application and information for foreign nationals visiting Aminoac</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-plane-arrival"></i></div>
+                    <div class="service-text">
+                        <h3>Tourist Visa</h3>
+                        <p>Apply for a short-term tourist visa valid for up to 90 days. Required for citizens of countries not on the visa-free list. Processing time is typically 10-15 business days.</p>
+                        <a href="/travel/visa/tourist" class="service-link">Apply for Tourist Visa</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="service-text">
+                        <h3>Business Visa</h3>
+                        <p>For individuals traveling to Aminoac for business meetings, conferences, or negotiations. Valid for single or multiple entries over a 6-month period.</p>
+                        <a href="/travel/visa/business" class="service-link">Apply for Business Visa</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+                    <div class="service-text">
+                        <h3>Transit Visa</h3>
+                        <p>Required for travelers passing through Aminoac international airports with layovers exceeding 24 hours or those leaving the airport transit area.</p>
+                        <a href="/travel/visa/transit" class="service-link">Apply for Transit Visa</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-search"></i></div>
+                    <div class="service-text">
+                        <h3>Check Visa Application Status</h3>
+                        <p>Track the progress of your visa application using your reference number. Receive real-time updates on document review and approval status.</p>
+                        <a href="/travel/visa/status" class="service-link">Track Application</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-redo"></i></div>
+                    <div class="service-text">
+                        <h3>Visa Extension</h3>
+                        <p>Request an extension of your current visa if you need to stay longer than originally planned. Applications must be submitted at least 7 days before visa expiration.</p>
+                        <a href="/travel/visa/extension" class="service-link">Request Extension</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Passport Services -->
+        <div class="service-category" id="passport-services">
+            <div class="category-header">
+                <h2>Passport Services</h2>
+                <p>Apply for new passports, renewals, and emergency travel documents for Aminoac citizens</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-passport"></i></div>
+                    <div class="service-text">
+                        <h3>New Passport Application</h3>
+                        <p>First-time passport applicants can submit applications online or at designated passport offices. Standard processing takes 4-6 weeks, with expedited service available for urgent travel.</p>
+                        <a href="/travel/passport/new" class="service-link">Apply for New Passport</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="service-text">
+                        <h3>Passport Renewal</h3>
+                        <p>Renew your Aminoac passport up to 12 months before expiration. Online renewal is available for eligible citizens with no changes to personal information.</p>
+                        <a href="/travel/passport/renew" class="service-link">Renew Passport</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="service-text">
+                        <h3>Emergency Travel Document</h3>
+                        <p>Citizens abroad who have lost or had their passport stolen can obtain an emergency travel document at the nearest Aminoac embassy or consulate for immediate return home.</p>
+                        <a href="/travel/passport/emergency" class="service-link">Request Emergency Document</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-child"></i></div>
+                    <div class="service-text">
+                        <h3>Child Passport Services</h3>
+                        <p>Special passport services for minors under 16 years of age. Both parents or legal guardians must provide consent for passport issuance.</p>
+                        <a href="/travel/passport/child" class="service-link">Apply for Child Passport</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Advisories -->
+        <div class="service-category" id="travel-advisories">
+            <div class="category-header">
+                <h2>Travel Advisories & Safety Information</h2>
+                <p>Current travel warnings and safety recommendations for Aminoac citizens abroad</p>
+            </div>
+
+            <div class="advisory-grid">
+                <div class="advisory-card level-1">
+                    <span class="level-badge">Level 1 - Normal</span>
+                    <h4>Western Europe</h4>
+                    <p>Exercise normal precautions when traveling to Western European countries. No specific threats identified.</p>
+                </div>
+
+                <div class="advisory-card level-2">
+                    <span class="level-badge">Level 2 - Caution</span>
+                    <h4>Eastern Europe</h4>
+                    <p>Exercise increased caution due to regional political tensions. Avoid demonstrations and large public gatherings.</p>
+                </div>
+
+                <div class="advisory-card level-3">
+                    <span class="level-badge">Level 3 - Reconsider</span>
+                    <h4>Middle East (Selected Areas)</h4>
+                    <p>Reconsider travel due to ongoing conflicts and terrorist activities. Essential travel only with comprehensive security planning.</p>
+                </div>
+
+                <div class="advisory-card level-4">
+                    <span class="level-badge">Level 4 - Do Not Travel</span>
+                    <h4>Active Conflict Zones</h4>
+                    <p>Do not travel to active war zones and areas under emergency declarations. Immediate evacuation recommended for current residents.</p>
+                </div>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-bell"></i></div>
+                    <div class="service-text">
+                        <h3>Subscribe to Travel Alerts</h3>
+                        <p>Register your travel plans and receive real-time alerts about safety and security conditions in your destination countries via email and SMS.</p>
+                        <a href="/travel/alerts/subscribe" class="service-link">Subscribe to Alerts</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="service-text">
+                        <h3>Country-Specific Information</h3>
+                        <p>Access detailed travel information for over 200 countries including entry requirements, health advisories, local laws, and cultural guidance.</p>
+                        <a href="/travel/country-info" class="service-link">Browse Country Information</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="service-text">
+                        <h3>24/7 Emergency Assistance</h3>
+                        <p>Contact the Ministry of Foreign Affairs emergency hotline for urgent consular assistance while traveling abroad. Available in multiple languages.</p>
+                        <a href="/travel/emergency-contact" class="service-link">Emergency Contact Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- International Driver's License -->
+        <div class="service-category" id="drivers-license">
+            <div class="category-header">
+                <h2>International Driving Permit</h2>
+                <p>Authorization to drive in foreign countries for Aminoac license holders</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-car"></i></div>
+                    <div class="service-text">
+                        <h3>Apply for International Driving Permit</h3>
+                        <p>Obtain an International Driving Permit (IDP) which translates your Aminoac driver's license into 10 languages. Valid for one year and recognized in over 150 countries.</p>
+                        <a href="/travel/idp/apply" class="service-link">Apply for IDP</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-info-circle"></i></div>
+                    <div class="service-text">
+                        <h3>IDP Requirements & Validity</h3>
+                        <p>Learn which countries require an IDP, application requirements, and important information about driving abroad with an Aminoac license.</p>
+                        <a href="/travel/idp/info" class="service-link">IDP Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customs & Border Information -->
+        <div class="service-category" id="customs">
+            <div class="category-header">
+                <h2>Customs & Border Control</h2>
+                <p>Information about bringing goods into and out of Aminoac</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-suitcase"></i></div>
+                    <div class="service-text">
+                        <h3>Customs Regulations</h3>
+                        <p>Understand duty-free allowances, prohibited items, and declaration requirements when entering Aminoac. Review the complete list of restricted and banned goods.</p>
+                        <a href="/travel/customs/regulations" class="service-link">View Customs Regulations</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="service-text">
+                        <h3>Customs Declaration Form</h3>
+                        <p>Complete your customs declaration form online before arrival to expedite processing at border control. Digital declarations are processed faster than paper forms.</p>
+                        <a href="/travel/customs/declaration" class="service-link">Complete Declaration</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-paw"></i></div>
+                    <div class="service-text">
+                        <h3>Traveling with Pets</h3>
+                        <p>Requirements for bringing pets into Aminoac including vaccinations, health certificates, microchipping, and quarantine regulations for different animal species.</p>
+                        <a href="/travel/customs/pets" class="service-link">Pet Import Requirements</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-coins"></i></div>
+                    <div class="service-text">
+                        <h3>Currency Declaration</h3>
+                        <p>Travelers carrying more than €10,000 in cash or equivalent must complete a currency declaration form. Learn about currency import and export regulations.</p>
+                        <a href="/travel/customs/currency" class="service-link">Currency Regulations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health & Vaccination -->
+        <div class="service-category" id="health">
+            <div class="category-header">
+                <h2>Health & Vaccination Requirements</h2>
+                <p>Medical and vaccination information for international travelers</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-syringe"></i></div>
+                    <div class="service-text">
+                        <h3>Required Vaccinations</h3>
+                        <p>Check which vaccinations are required or recommended for travelers entering Aminoac from specific countries or regions. Yellow fever vaccination certificate may be required.</p>
+                        <a href="/travel/health/vaccinations" class="service-link">Vaccination Requirements</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-notes-medical"></i></div>
+                    <div class="service-text">
+                        <h3>Travel Health Insurance</h3>
+                        <p>Information about health insurance requirements for visitors to Aminoac and recommendations for Aminoac citizens traveling abroad to ensure adequate medical coverage.</p>
+                        <a href="/travel/health/insurance" class="service-link">Health Insurance Guide</a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-pills"></i></div>
+                    <div class="service-text">
+                        <h3>Traveling with Medications</h3>
+                        <p>Guidelines for bringing prescription and over-the-counter medications into Aminoac. Some medications require special permits or are prohibited entirely.</p>
+                        <a href="/travel/health/medications" class="service-link">Medication Guidelines</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>About Government</h4>
+                    <ul>
+                        <li><a href="/government/president">The President</a></li>
+                        <li><a href="/government/ministries">Ministries</a></li>
+                        <li><a href="/government/legislation">Legislation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/data">Data & Statistics</a></li>
+                        <li><a href="/press">Publications</a></li>
+                        <li><a href="/forms">Forms Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/legal/accessibility">Accessibility</a></li>
+                        <li><a href="/legal/terms">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Follow government updates</p>
+                <div class="social-links">
+                    <a href="https://x.com" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://space.bilibili.com/1522815623/" target="_blank" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">© 2026 Federal Republic of Aminoac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // Comprehensive Country/Region Database (excluding Caucasus region)
+        const countries = [
+            { name: "Albania", code: "al", status: "visa-free", text: "Albania citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Andorra", code: "ad", status: "visa-free", text: "Andorra citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Argentina", code: "ar", status: "visa-free", text: "Argentina citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Australia", code: "au", status: "visa-free", text: "Australia citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Austria", code: "at", status: "visa-free", text: "Austria citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Belgium", code: "be", status: "visa-free", text: "Belgium citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Bosnia and Herzegovina", code: "ba", status: "visa-free", text: "Bosnia and Herzegovina citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Bulgaria", code: "bg", status: "visa-free", text: "Bulgaria citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Canada", code: "ca", status: "visa-free", text: "Canada citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Chile", code: "cl", status: "visa-free", text: "Chile citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Croatia", code: "hr", status: "visa-free", text: "Croatia citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Cyprus", code: "cy", status: "visa-free", text: "Cyprus citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Czech Republic", code: "cz", status: "visa-free", text: "Czech Republic citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Denmark", code: "dk", status: "visa-free", text: "Denmark citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Estonia", code: "ee", status: "visa-free", text: "Estonia citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Finland", code: "fi", status: "visa-free", text: "Finland citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "France", code: "fr", status: "visa-free", text: "France citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Germany", code: "de", status: "visa-free", text: "Germany citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Greece", code: "gr", status: "visa-free", text: "Greece citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Hong Kong", code: "hk", status: "visa-free", text: "Hong Kong SAR passport holders can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Hungary", code: "hu", status: "visa-free", text: "Hungary citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Iceland", code: "is", status: "visa-free", text: "Iceland citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Ireland", code: "ie", status: "visa-free", text: "Ireland citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Israel", code: "il", status: "visa-free", text: "Israel citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Italy", code: "it", status: "visa-free", text: "Italy citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Japan", code: "jp", status: "visa-free", text: "Japan citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Kosovo", code: "xk", status: "visa-free", text: "Kosovo citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Latvia", code: "lv", status: "visa-free", text: "Latvia citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Liechtenstein", code: "li", status: "visa-free", text: "Liechtenstein citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Lithuania", code: "lt", status: "visa-free", text: "Lithuania citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Luxembourg", code: "lu", status: "visa-free", text: "Luxembourg citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Macao", code: "mo", status: "visa-free", text: "Macao SAR passport holders can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Malaysia", code: "my", status: "visa-free", text: "Malaysia citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Malta", code: "mt", status: "visa-free", text: "Malta citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Monaco", code: "mc", status: "visa-free", text: "Monaco citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Montenegro", code: "me", status: "visa-free", text: "Montenegro citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Netherlands", code: "nl", status: "visa-free", text: "Netherlands citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "New Zealand", code: "nz", status: "visa-free", text: "New Zealand citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "North Macedonia", code: "mk", status: "visa-free", text: "North Macedonia citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Norway", code: "no", status: "visa-free", text: "Norway citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Poland", code: "pl", status: "visa-free", text: "Poland citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Portugal", code: "pt", status: "visa-free", text: "Portugal citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Romania", code: "ro", status: "visa-free", text: "Romania citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "San Marino", code: "sm", status: "visa-free", text: "San Marino citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Serbia", code: "rs", status: "visa-free", text: "Serbia citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Singapore", code: "sg", status: "visa-free", text: "Singapore citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Slovakia", code: "sk", status: "visa-free", text: "Slovakia citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Slovenia", code: "si", status: "visa-free", text: "Slovenia citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "South Korea", code: "kr", status: "visa-free", text: "South Korea citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Spain", code: "es", status: "visa-free", text: "Spain citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Sweden", code: "se", status: "visa-free", text: "Sweden citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Switzerland", code: "ch", status: "visa-free", text: "Switzerland citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Taiwan", code: "tw", status: "visa-free", text: "Taiwan passport holders can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "United Arab Emirates", code: "ae", status: "visa-free", text: "United Arab Emirates citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "United Kingdom", code: "gb", status: "visa-free", text: "United Kingdom citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "United States", code: "us", status: "visa-free", text: "United States citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Uruguay", code: "uy", status: "visa-free", text: "Uruguay citizens can enter Aminoac visa-free for stays up to 90 days for tourism or business purposes." },
+            { name: "Vatican City", code: "va", status: "visa-free", text: "Vatican City citizens can enter Aminoac visa-free for stays up to 90 days within any 180-day period for tourism or business purposes." },
+            { name: "Afghanistan", code: "af", status: "visa-required", text: "Afghanistan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Algeria", code: "dz", status: "visa-required", text: "Algeria citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Angola", code: "ao", status: "visa-required", text: "Angola citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Bahrain", code: "bh", status: "visa-required", text: "Bahrain citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Bangladesh", code: "bd", status: "visa-required", text: "Bangladesh citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Belarus", code: "by", status: "visa-required", text: "Belarus citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Benin", code: "bj", status: "visa-required", text: "Benin citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Bhutan", code: "bt", status: "visa-required", text: "Bhutan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Bolivia", code: "bo", status: "visa-required", text: "Bolivia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Botswana", code: "bw", status: "visa-required", text: "Botswana citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Brazil", code: "br", status: "visa-required", text: "Brazil citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Brunei", code: "bn", status: "visa-required", text: "Brunei citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Burkina Faso", code: "bf", status: "visa-required", text: "Burkina Faso citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Burundi", code: "bi", status: "visa-required", text: "Burundi citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Cambodia", code: "kh", status: "visa-required", text: "Cambodia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Cameroon", code: "cm", status: "visa-required", text: "Cameroon citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Cape Verde", code: "cv", status: "visa-required", text: "Cape Verde citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Central African Republic", code: "cf", status: "visa-required", text: "Central African Republic citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Chad", code: "td", status: "visa-required", text: "Chad citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "China", code: "cn", status: "visa-required", text: "China citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Colombia", code: "co", status: "visa-required", text: "Colombia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Comoros", code: "km", status: "visa-required", text: "Comoros citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Congo (Brazzaville)", code: "cg", status: "visa-required", text: "Congo (Brazzaville) citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Congo (Kinshasa)", code: "cd", status: "visa-required", text: "Congo (Kinshasa) citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Costa Rica", code: "cr", status: "visa-required", text: "Costa Rica citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Côte d'Ivoire", code: "ci", status: "visa-required", text: "Côte d'Ivoire citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Cuba", code: "cu", status: "visa-required", text: "Cuba citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Djibouti", code: "dj", status: "visa-required", text: "Djibouti citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Dominica", code: "dm", status: "visa-required", text: "Dominica citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Dominican Republic", code: "do", status: "visa-required", text: "Dominican Republic citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Ecuador", code: "ec", status: "visa-required", text: "Ecuador citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Egypt", code: "eg", status: "visa-required", text: "Egypt citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "El Salvador", code: "sv", status: "visa-required", text: "El Salvador citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Equatorial Guinea", code: "gq", status: "visa-required", text: "Equatorial Guinea citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Eritrea", code: "er", status: "visa-required", text: "Eritrea citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Eswatini", code: "sz", status: "visa-required", text: "Eswatini citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Ethiopia", code: "et", status: "visa-required", text: "Ethiopia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Fiji", code: "fj", status: "visa-required", text: "Fiji citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Gabon", code: "ga", status: "visa-required", text: "Gabon citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Gambia", code: "gm", status: "visa-required", text: "Gambia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Ghana", code: "gh", status: "visa-required", text: "Ghana citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Grenada", code: "gd", status: "visa-required", text: "Grenada citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Guatemala", code: "gt", status: "visa-required", text: "Guatemala citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Guinea", code: "gn", status: "visa-required", text: "Guinea citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Guinea-Bissau", code: "gw", status: "visa-required", text: "Guinea-Bissau citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Guyana", code: "gy", status: "visa-required", text: "Guyana citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Haiti", code: "ht", status: "visa-required", text: "Haiti citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Honduras", code: "hn", status: "visa-required", text: "Honduras citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "India", code: "in", status: "visa-required", text: "India citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Indonesia", code: "id", status: "visa-required", text: "Indonesia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Iran", code: "ir", status: "visa-required", text: "Iran citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Iraq", code: "iq", status: "visa-required", text: "Iraq citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Jamaica", code: "jm", status: "visa-required", text: "Jamaica citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Jordan", code: "jo", status: "visa-required", text: "Jordan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Kazakhstan", code: "kz", status: "visa-required", text: "Kazakhstan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Kenya", code: "ke", status: "visa-required", text: "Kenya citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Kiribati", code: "ki", status: "visa-required", text: "Kiribati citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Kuwait", code: "kw", status: "visa-required", text: "Kuwait citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Kyrgyzstan", code: "kg", status: "visa-required", text: "Kyrgyzstan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Laos", code: "la", status: "visa-required", text: "Laos citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Lebanon", code: "lb", status: "visa-required", text: "Lebanon citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Lesotho", code: "ls", status: "visa-required", text: "Lesotho citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Liberia", code: "lr", status: "visa-required", text: "Liberia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Libya", code: "ly", status: "visa-required", text: "Libya citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Madagascar", code: "mg", status: "visa-required", text: "Madagascar citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Malawi", code: "mw", status: "visa-required", text: "Malawi citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Maldives", code: "mv", status: "visa-required", text: "Maldives citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Mali", code: "ml", status: "visa-required", text: "Mali citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Marshall Islands", code: "mh", status: "visa-required", text: "Marshall Islands citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Mauritania", code: "mr", status: "visa-required", text: "Mauritania citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Mauritius", code: "mu", status: "visa-required", text: "Mauritius citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Mexico", code: "mx", status: "visa-required", text: "Mexico citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Micronesia", code: "fm", status: "visa-required", text: "Micronesia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Moldova", code: "md", status: "visa-required", text: "Moldova citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Mongolia", code: "mn", status: "visa-required", text: "Mongolia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Morocco", code: "ma", status: "visa-required", text: "Morocco citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Mozambique", code: "mz", status: "visa-required", text: "Mozambique citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Myanmar", code: "mm", status: "visa-required", text: "Myanmar citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Namibia", code: "na", status: "visa-required", text: "Namibia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Nauru", code: "nr", status: "visa-required", text: "Nauru citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Nepal", code: "np", status: "visa-required", text: "Nepal citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Nicaragua", code: "ni", status: "visa-required", text: "Nicaragua citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Niger", code: "ne", status: "visa-required", text: "Niger citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Nigeria", code: "ng", status: "visa-required", text: "Nigeria citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "North Korea", code: "kp", status: "visa-required", text: "North Korea citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Oman", code: "om", status: "visa-required", text: "Oman citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Pakistan", code: "pk", status: "visa-required", text: "Pakistan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Palau", code: "pw", status: "visa-required", text: "Palau citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Palestine", code: "ps", status: "visa-required", text: "Palestine citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Panama", code: "pa", status: "visa-required", text: "Panama citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Papua New Guinea", code: "pg", status: "visa-required", text: "Papua New Guinea citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Paraguay", code: "py", status: "visa-required", text: "Paraguay citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Peru", code: "pe", status: "visa-required", text: "Peru citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Philippines", code: "ph", status: "visa-required", text: "Philippines citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Qatar", code: "qa", status: "visa-required", text: "Qatar citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Russia", code: "ru", status: "visa-required", text: "Russia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Rwanda", code: "rw", status: "visa-required", text: "Rwanda citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Saint Kitts and Nevis", code: "kn", status: "visa-required", text: "Saint Kitts and Nevis citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Saint Lucia", code: "lc", status: "visa-required", text: "Saint Lucia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Saint Vincent and the Grenadines", code: "vc", status: "visa-required", text: "Saint Vincent and the Grenadines citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Samoa", code: "ws", status: "visa-required", text: "Samoa citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "São Tomé and Príncipe", code: "st", status: "visa-required", text: "São Tomé and Príncipe citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Saudi Arabia", code: "sa", status: "visa-required", text: "Saudi Arabia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Senegal", code: "sn", status: "visa-required", text: "Senegal citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Seychelles", code: "sc", status: "visa-required", text: "Seychelles citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Sierra Leone", code: "sl", status: "visa-required", text: "Sierra Leone citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Solomon Islands", code: "sb", status: "visa-required", text: "Solomon Islands citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Somalia", code: "so", status: "visa-required", text: "Somalia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "South Africa", code: "za", status: "visa-required", text: "South Africa citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "South Sudan", code: "ss", status: "visa-required", text: "South Sudan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Sri Lanka", code: "lk", status: "visa-required", text: "Sri Lanka citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Sudan", code: "sd", status: "visa-required", text: "Sudan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Suriname", code: "sr", status: "visa-required", text: "Suriname citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Syria", code: "sy", status: "visa-required", text: "Syria citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Tajikistan", code: "tj", status: "visa-required", text: "Tajikistan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Tanzania", code: "tz", status: "visa-required", text: "Tanzania citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Thailand", code: "th", status: "visa-required", text: "Thailand citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Timor-Leste", code: "tl", status: "visa-required", text: "Timor-Leste citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Togo", code: "tg", status: "visa-required", text: "Togo citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Tonga", code: "to", status: "visa-required", text: "Tonga citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Trinidad and Tobago", code: "tt", status: "visa-required", text: "Trinidad and Tobago citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Tunisia", code: "tn", status: "visa-required", text: "Tunisia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Turkey", code: "tr", status: "visa-required", text: "Turkey citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Turkmenistan", code: "tm", status: "visa-required", text: "Turkmenistan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Tuvalu", code: "tv", status: "visa-required", text: "Tuvalu citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Uganda", code: "ug", status: "visa-required", text: "Uganda citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Ukraine", code: "ua", status: "visa-required", text: "Ukraine citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Uzbekistan", code: "uz", status: "visa-required", text: "Uzbekistan citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Vanuatu", code: "vu", status: "visa-required", text: "Vanuatu citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Venezuela", code: "ve", status: "visa-required", text: "Venezuela citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Vietnam", code: "vn", status: "visa-required", text: "Vietnam citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Yemen", code: "ye", status: "visa-required", text: "Yemen citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Zambia", code: "zm", status: "visa-required", text: "Zambia citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." },
+            { name: "Zimbabwe", code: "zw", status: "visa-required", text: "Zimbabwe citizens require a visa to enter Aminoac. Please apply at the nearest Aminoac embassy or consulate." }
+        ];
+
+        // Country Search & Selection
+        const countrySearchInput = document.getElementById('countrySearchInput');
+        const countryDropdown = document.getElementById('countryDropdown');
+        const checkerResult = document.getElementById('checkerResult');
+        const resultCountry = document.getElementById('resultCountry');
+        const resultText = document.getElementById('resultText');
+        const resultFlag = document.getElementById('resultFlag');
+        const visaStatusBadge = document.getElementById('visaStatusBadge');
+
+        let filteredCountries = [];
+
+        // Show dropdown when input is focused
+        countrySearchInput.addEventListener('focus', () => {
+            if (countrySearchInput.value.trim() === '') {
+                displayCountries(countries);
+            }
+        });
+
+        // Filter countries as user types
+        countrySearchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query === '') {
+                displayCountries(countries);
+            } else {
+                filteredCountries = countries.filter(country => 
+                    country.name.toLowerCase().includes(query)
+                );
+                displayCountries(filteredCountries);
+            }
+        });
+
+        // Display countries in dropdown
+        function displayCountries(countryList) {
+            if (countryList.length === 0) {
+                countryDropdown.innerHTML = '<div class="no-results">No countries found</div>';
+                countryDropdown.classList.add('show');
+                return;
+            }
+
+            countryDropdown.innerHTML = countryList.map(country => `
+                <div class="country-option" data-country='${JSON.stringify(country)}'>
+                    <img src="https://flagcdn.com/w40/${country.code}.png" class="country-flag" alt="${country.name}" onerror="this.style.display='none'">
+                    <span class="country-name">${country.name}</span>
+                </div>
+            `).join('');
+
+            countryDropdown.classList.add('show');
+
+            // Add click event to each option
+            document.querySelectorAll('.country-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const country = JSON.parse(option.getAttribute('data-country'));
+                    selectCountry(country);
+                });
+            });
+        }
+
+        // Select a country and show result
+        function selectCountry(country) {
+            countrySearchInput.value = country.name;
+            countryDropdown.classList.remove('show');
+            
+            // Update result display
+            resultCountry.textContent = country.name;
+            resultFlag.src = `https://flagcdn.com/w80/${country.code}.png`;
+            resultFlag.alt = country.name;
+            resultText.textContent = country.text;
+
+            if (country.status === 'visa-free') {
+                visaStatusBadge.textContent = '✓ Visa Not Required';
+                visaStatusBadge.className = 'visa-status-badge visa-free';
+            } else {
+                visaStatusBadge.textContent = '✗ Visa Required';
+                visaStatusBadge.className = 'visa-status-badge visa-required';
+            }
+
+            checkerResult.classList.add('show');
+            
+            // Smooth scroll to result
+            setTimeout(() => {
+                checkerResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-wrapper')) {
+                countryDropdown.classList.remove('show');
+            }
+        });
+
+        // Site Search Functionality
+        const siteContent = [
+            { title: "Tourist Visa", type: "Travel", desc: "Apply for short-term tourist visa.", url: "#visa-services" },
+            { title: "Visa Requirements", type: "Travel", desc: "Check if you need a visa.", url: "#visa-services" },
+            { title: "Passport Services", type: "Travel", desc: "Apply or renew passports.", url: "#passport-services" },
+            { title: "Travel Advisories", type: "Travel", desc: "Safety information for travelers.", url: "#travel-advisories" },
+            { title: "Customs Regulations", type: "Travel", desc: "Border control information.", url: "#customs" },
+            { title: "Health Requirements", type: "Travel", desc: "Vaccination and health info.", url: "#health" }
+        ];
+
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        function openSearch(query = '') {
+            searchOverlay.classList.add('active');
+            searchInput.value = query;
+            searchInput.focus();
+            if(query) performSearch(query);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            searchResults.innerHTML = '';
+        }
+
+        function performSearch(query) {
+            const lowerQuery = query.toLowerCase();
+            const filtered = siteContent.filter(item => 
+                item.title.toLowerCase().includes(lowerQuery) || item.desc.toLowerCase().includes(lowerQuery)
+            );
+            searchResults.innerHTML = filtered.length > 0 ? filtered.map(item => `
+                <a href="${item.url}" class="result-item">
+                    <span class="result-tag">${item.type}</span>
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-desc">${item.desc}</div>
+                </a>
+            `).join('') : '<p style="text-align:center; padding:20px;">No results found.</p>';
+        }
+
+        document.getElementById('desktopSearchTrigger').onclick = () => openSearch();
+        document.getElementById('searchClose').onclick = closeSearch;
+        searchInput.oninput = (e) => performSearch(e.target.value);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+
+        // Mobile Search
+        document.getElementById('mobileSearchBtn').onclick = () => {
+            openSearch(document.getElementById('mobileSearchInput').value);
+        };
+
+        // Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.onclick = () => navMenu.classList.toggle('active');
+
+        const langBtn = document.querySelector('.lang-btn');
+        const langMenu = document.querySelector('.lang-menu');
+        if(langBtn) { 
+            langBtn.onclick = () => {
+                langMenu.classList.toggle('active');
+                langBtn.setAttribute('aria-expanded', langMenu.classList.contains('active'));
+            };
+        }
+
+        // Back to Top
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add("show");
+            else backToTopBtn.classList.remove("show");
+        };
+        backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    </script>
+</body>
+</html>
